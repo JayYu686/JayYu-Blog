@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="TERMINAL_EDITORIAL // 开源项目">
+	<TopNav activePath="/projects/" />
+	<Sidebar />
+	
+	<!-- Main Content Canvas -->
+	<main class="lg:ml-64 pt-24 pb-12 px-6 md:px-12 max-w-7xl">
+		<!-- Header Section -->
+		<header class="mb-16">
+			<div class="flex items-baseline gap-4 mb-2">
+				<h1 class="text-5xl md:text-7xl font-headline font-bold tracking-tighter text-on-surface uppercase leading-none">
+					开源项目<span class="text-primary-container">_</span>
+				</h1>
+				<span class="font-label text-xs tracking-[0.3em] text-outline-variant uppercase">存档.V2</span>
+			</div>
+			<p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed font-body">
+				精心挑选的开源内核、高性能 CLI 工具以及为现代终端生态构建的实验性中间件。
+			</p>
+		</header>
+		<!-- Filters Section -->
+		<section class="mb-12 flex flex-wrap items-center gap-4">
+			<span class="font-label text-[10px] tracking-widest uppercase text-outline-variant mr-2">按技术栈筛选:</span>
+			<button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary font-label text-xs font-bold uppercase tracking-wider active-gradient">全部</button>
+			<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label text-xs font-bold uppercase tracking-wider ghost-border hover:text-primary-container transition-colors">Rust</button>
+			<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label text-xs font-bold uppercase tracking-wider ghost-border hover:text-primary-container transition-colors">Go</button>
+			<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label text-xs font-bold uppercase tracking-wider ghost-border hover:text-primary-container transition-colors">TypeScript</button>
+		</section>
+		<!-- Projects Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+			<!-- Project Card 1 -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="terminal">terminal</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">稳定版</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 2小时前</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">HYPER_CORE</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					专为分布式系统中的高吞吐量数据包处理而设计的事件驱动异步运行时。
+				</p>
+				<!-- Tags -->
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Rust</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Tokio</span>
+				</div>
+				<!-- Footer Stats -->
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">1.2k</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">84</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+			<!-- Project Card 2 -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="database">database</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">v0.9.4-rc</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 昨天</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">OXY_DB</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					针对 NVMe 驱动器优化的嵌入式键值存储，具有原生零拷贝序列化功能。
+				</p>
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Go</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">LSM-Tree</span>
+				</div>
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">842</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">31</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+			<!-- Project Card 3 (Featured/Asymmetric) -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow md:col-span-2 xl:col-span-1">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="monitoring">monitoring</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">活跃中</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 4天前</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">VISUAL_TRACE</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					使用 eBPF 和自定义 TUI 渲染逻辑为微服务提供的实时可视化遥测。
+				</p>
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">TypeScript</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">React</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">eBPF</span>
+				</div>
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">2.5k</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">142</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+			<!-- Project Card 4 -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="security">security</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">稳定版</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 1周前</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">CRYPT_GATE</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					适用于传统二进制协议的零信任身份提供程序，支持自动 TLS 终止。
+				</p>
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Rust</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Crypto</span>
+				</div>
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">412</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">19</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+			<!-- Project Card 5 -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="schema">schema</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">测试版</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 2周前</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">LOG_PARSER</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					极速且无正则表达式的日志摄取工具，用于对海量日志文件进行结构化解析。
+				</p>
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Go</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">SIMD</span>
+				</div>
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">198</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">42</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+			<!-- Project Card 6 -->
+			<article class="group relative bg-surface-container-low p-8 transition-all hover:translate-y-[-4px] hover:bg-surface-container ambient-glow">
+				<div class="flex justify-between items-start mb-6">
+					<div class="w-10 h-10 bg-primary-container/10 flex items-center justify-center ghost-border">
+						<span class="material-symbols-outlined text-primary-container" data-icon="extension">extension</span>
+					</div>
+					<div class="flex flex-col items-end gap-1">
+						<span class="font-label text-[10px] text-primary-container tracking-widest uppercase">实验性</span>
+						<span class="font-label text-[10px] text-outline-variant uppercase">更新于 1月前</span>
+					</div>
+				</div>
+				<h3 class="text-2xl font-headline font-bold mb-3 tracking-tight group-hover:text-primary-container transition-colors">TUI_KIT</h3>
+				<p class="text-on-surface-variant text-sm mb-6 font-body leading-relaxed">
+					一个声明式 UI 库，用于构建具有类似 CSS 样式的富终端应用程序。
+				</p>
+				<div class="flex flex-wrap gap-2 mb-8">
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Rust</span>
+					<span class="px-2 py-0.5 bg-surface-container-high font-label text-[10px] text-on-secondary-container ghost-border uppercase">Ratatui</span>
+				</div>
+				<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+					<div class="flex gap-4">
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="grade">grade</span>
+							<span class="font-label text-xs text-on-surface-variant">3.1k</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<span class="material-symbols-outlined text-xs text-outline-variant" data-icon="fork_right">fork_right</span>
+							<span class="font-label text-xs text-on-surface-variant">211</span>
+						</div>
+					</div>
+					<a class="material-symbols-outlined text-outline-variant hover:text-primary-container transition-colors" data-icon="arrow_outward" href="#">arrow_outward</a>
+				</div>
+			</article>
+		</div>
+		<!-- Pagination/Load More (Editorial Style) -->
+		<div class="mt-20 flex flex-col items-center">
+			<button class="group relative px-12 py-4 bg-transparent ghost-border overflow-hidden">
+				<div class="absolute inset-0 bg-primary-container/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+				<span class="relative font-label text-xs font-black uppercase tracking-[0.4em] group-hover:text-primary-container transition-colors">加载更多数据包</span>
+			</button>
+			<div class="mt-8 font-label text-[10px] text-outline-variant uppercase tracking-widest">已到达流末尾。第 01 页，共 12 页</div>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

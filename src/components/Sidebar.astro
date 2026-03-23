@@ -1,0 +1,28 @@
+---
+// Sidebar.astro
+---
+<aside class="fixed left-0 top-0 h-full w-64 hidden lg:block bg-[#1a1b1f] z-40">
+    <div class="flex flex-col pt-24 h-full">
+        <div class="px-8 mb-12">
+            <div class="text-lg font-bold text-[#00FF00] font-headline">终端_根节点</div>
+            <div class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-on-surface-variant opacity-60">v2.0.4-稳定版</div>
+        </div>
+        <nav class="flex flex-col font-['Space_Grotesk'] text-xs tracking-widest uppercase">
+            <a class="text-gray-500 flex items-center gap-3 px-8 py-3 hover:bg-[#1e1f23] hover:text-[#00FF00] transition-all hover:translate-x-1 duration-200" href="#">
+                <span class="material-symbols-outlined text-sm">code</span> GitHub
+            </a>
+            <a class="text-gray-500 flex items-center gap-3 px-8 py-3 hover:bg-[#1e1f23] hover:text-[#00FF00] transition-all hover:translate-x-1 duration-200" href="#">
+                <span class="material-symbols-outlined text-sm">share</span> LinkedIn
+            </a>
+            <a class="text-gray-500 flex items-center gap-3 px-8 py-3 hover:bg-[#1e1f23] hover:text-[#00FF00] transition-all hover:translate-x-1 duration-200" href="#">
+                <span class="material-symbols-outlined text-sm">rss_feed</span> RSS 订阅
+            </a>
+        </nav>
+        <div class="mt-auto p-8">
+            <div class="p-4 bg-surface-container rounded-lg border border-outline-variant/10">
+                <div class="text-[10px] text-primary-fixed-dim font-label mb-1">运行时间</div>
+                <div class="text-xl font-headline font-bold text-on-surface">99.98%</div>
+            </div>
+        </div>
+    </div>
+</aside>

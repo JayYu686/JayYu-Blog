@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="TERMINAL_EDITORIAL // 资源导航">
+	<TopNav activePath="/bookmarks/" />
+	<Sidebar />
+	
+	<!-- Main Content -->
+	<main class="lg:ml-64 pt-32 pb-24 px-8 max-w-7xl mx-auto">
+		<!-- Header Section -->
+		<header class="mb-20 max-w-3xl">
+			<div class="inline-block px-2 py-1 bg-surface-container-high mb-6">
+				<span class="text-[10px] font-headline text-[#00FF00] tracking-[0.3em] uppercase">资源目录.v2</span>
+			</div>
+			<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter text-on-surface leading-none mb-6">
+				精选_<span class="text-[#00FF00]">技术栈</span>
+			</h1>
+			<p class="text-on-surface-variant text-lg max-w-xl font-body leading-relaxed">
+				构建 Terminal Editorial 生态系统的工具、灵感和协议的数学集合。每周更新。
+			</p>
+		</header>
+		<!-- Bento Grid Sections -->
+		<div class="space-y-32">
+			<!-- Dev Tools Section -->
+			<section id="dev-tools">
+				<div class="flex items-end gap-4 mb-12">
+					<h2 class="text-3xl font-black font-headline tracking-tighter uppercase">01 // 开发工具</h2>
+					<div class="h-[1px] flex-grow bg-outline-variant/20 mb-2"></div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+					<!-- Tool Card -->
+					<a class="group block p-6 bg-surface-container-low hover:bg-surface-container transition-all duration-300 relative overflow-hidden" href="#">
+						<div class="flex justify-between items-start mb-8">
+							<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center rounded border border-outline-variant/10">
+								<span class="material-symbols-outlined text-[#00FF00]" data-icon="terminal">terminal</span>
+							</div>
+							<span class="text-[10px] font-headline text-gray-600 tracking-widest uppercase">开源</span>
+						</div>
+						<h3 class="text-lg font-bold font-headline mb-2 text-on-surface group-hover:text-[#00FF00] transition-colors">Warp 终端</h3>
+						<p class="text-sm text-on-surface-variant font-body">21 世纪的终端工具，像现代 IDE 一样工作并集成了 AI 能力。</p>
+						<div class="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+							<span class="text-[10px] font-headline text-[#00FF00] uppercase tracking-widest">连接协议</span>
+							<span class="material-symbols-outlined text-xs text-[#00FF00]" data-icon="arrow_forward">arrow_forward</span>
+						</div>
+					</a>
+					<a class="group block p-6 bg-surface-container-low hover:bg-surface-container transition-all duration-300" href="#">
+						<div class="flex justify-between items-start mb-8">
+							<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center rounded border border-outline-variant/10">
+								<span class="material-symbols-outlined text-[#00FF00]" data-icon="data_object">data_object</span>
+							</div>
+							<span class="text-[10px] font-headline text-gray-600 tracking-widest uppercase">调试</span>
+						</div>
+						<h3 class="text-lg font-bold font-headline mb-2 text-on-surface group-hover:text-[#00FF00] transition-colors">JSON Hero</h3>
+						<p class="text-sm text-on-surface-variant font-body">一个精美的 JSON 查看器，让阅读复杂数据结构变得毫不费力。</p>
+						<div class="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+							<span class="text-[10px] font-headline text-[#00FF00] uppercase tracking-widest">执行链接</span>
+							<span class="material-symbols-outlined text-xs text-[#00FF00]" data-icon="arrow_forward">arrow_forward</span>
+						</div>
+					</a>
+					<a class="group block p-6 bg-surface-container-low hover:bg-surface-container transition-all duration-300" href="#">
+						<div class="flex justify-between items-start mb-8">
+							<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center rounded border border-outline-variant/10">
+								<span class="material-symbols-outlined text-[#00FF00]" data-icon="monitoring">monitoring</span>
+							</div>
+							<span class="text-[10px] font-headline text-gray-600 tracking-widest uppercase">性能</span>
+						</div>
+						<h3 class="text-lg font-bold font-headline mb-2 text-on-surface group-hover:text-[#00FF00] transition-colors">Lighthouse Pro</h3>
+						<p class="text-sm text-on-surface-variant font-body">先进的核心 Web 指标监测，提供实时的优化建议。</p>
+						<div class="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+							<span class="text-[10px] font-headline text-[#00FF00] uppercase tracking-widest">执行链接</span>
+							<span class="material-symbols-outlined text-xs text-[#00FF00]" data-icon="arrow_forward">arrow_forward</span>
+						</div>
+					</a>
+				</div>
+			</section>
+			<!-- UI Inspiration Section -->
+			<section id="ui-inspiration">
+				<div class="flex items-end gap-4 mb-12">
+					<h2 class="text-3xl font-black font-headline tracking-tighter uppercase">02 // UI 灵感</h2>
+					<div class="h-[1px] flex-grow bg-outline-variant/20 mb-2"></div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- Featured Inspiration -->
+					<div class="col-span-1 md:col-span-2 relative group cursor-pointer overflow-hidden rounded-lg aspect-[21/9]">
+						<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent z-10"></div>
+						<img alt="Abstract 3D gradients" class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Abstract minimalist 3D gradient shapes with smooth lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABXm8-ee435lbv4ix0AtKGImkMGJqjAEr2AknnNyXQRa9InzfxKBL5wwtlVMjzNWXBjG3GjO13iL2f4PXsj1tbq6G51W8QUPijLWXHWn7ex0Um1KYffVwwC2q4biF_eczgmKa88WEFiAcjUqvlCidPQNlRi5v-5opgJbKTzkO2PCOzcvon-WlYvIsik-iricobL8bZHzRa0gS2Vlq2VLe_E2XW0fQ5hCH4A3Tfp0bBqx4MzunYekIt45OODaOVOPcvqLycAK6AgExP"/>
+						<div class="absolute bottom-0 left-0 p-12 z-20">
+							<div class="flex items-center gap-4 mb-4">
+								<div class="w-12 h-12 bg-[#00FF00] rounded-full flex items-center justify-center">
+									<span class="material-symbols-outlined text-on-primary font-bold" data-icon="palette">palette</span>
+								</div>
+								<div>
+									<h3 class="text-2xl font-bold font-headline">Linear.app 风格指南</h3>
+									<p class="text-on-surface-variant font-body">精通深色模式和精密界面的艺术。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Small Grid Links -->
+					<div class="space-y-4">
+						<a class="flex items-center gap-6 p-4 bg-surface-container-low hover:bg-[#1e1f23] transition-all border-l-2 border-transparent hover:border-[#00FF00]" href="#">
+							<div class="w-12 h-12 flex-shrink-0 bg-surface-container flex items-center justify-center">
+								<span class="material-symbols-outlined text-gray-400" data-icon="view_quilt">view_quilt</span>
+							</div>
+							<div>
+								<h4 class="font-bold font-headline uppercase text-xs tracking-widest">Bentogrids.com</h4>
+								<p class="text-xs text-on-surface-variant mt-1">网页设计中最佳 Bento 风格布局的集合。</p>
+							</div>
+						</a>
+						<a class="flex items-center gap-6 p-4 bg-surface-container-low hover:bg-[#1e1f23] transition-all border-l-2 border-transparent hover:border-[#00FF00]" href="#">
+							<div class="w-12 h-12 flex-shrink-0 bg-surface-container flex items-center justify-center">
+								<span class="material-symbols-outlined text-gray-400" data-icon="font_download">font_download</span>
+							</div>
+							<div>
+								<h4 class="font-bold font-headline uppercase text-xs tracking-widest">Typewolf</h4>
+								<p class="text-xs text-on-surface-variant mt-1">数字排版趋势的绝对权威。</p>
+							</div>
+						</a>
+					</div>
+					<div class="space-y-4">
+						<a class="flex items-center gap-6 p-4 bg-surface-container-low hover:bg-[#1e1f23] transition-all border-l-2 border-transparent hover:border-[#00FF00]" href="#">
+							<div class="w-12 h-12 flex-shrink-0 bg-surface-container flex items-center justify-center">
+								<span class="material-symbols-outlined text-gray-400" data-icon="auto_awesome">auto_awesome</span>
+							</div>
+							<div>
+								<h4 class="font-bold font-headline uppercase text-xs tracking-widest">Godly Website</h4>
+								<p class="text-xs text-on-surface-variant mt-1">为高端美学网站精选的网页设计灵感。</p>
+							</div>
+						</a>
+						<a class="flex items-center gap-6 p-4 bg-surface-container-low hover:bg-[#1e1f23] transition-all border-l-2 border-transparent hover:border-[#00FF00]" href="#">
+							<div class="w-12 h-12 flex-shrink-0 bg-surface-container flex items-center justify-center">
+								<span class="material-symbols-outlined text-gray-400" data-icon="motion_photos_on">motion_photos_on</span>
+							</div>
+							<div>
+								<h4 class="font-bold font-headline uppercase text-xs tracking-widest">Lusion Labs</h4>
+								<p class="text-xs text-on-surface-variant mt-1">突破边界的 3D 和交互设计展示。</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- Self-Hosted Section -->
+			<section id="self-hosted">
+				<div class="flex items-end gap-4 mb-12">
+					<h2 class="text-3xl font-black font-headline tracking-tighter uppercase">03 // 私有部署</h2>
+					<div class="h-[1px] flex-grow bg-outline-variant/20 mb-2"></div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+					<!-- Tool Entry -->
+					<div class="group p-6 bg-surface-container border border-outline-variant/5 hover:border-[#00FF00]/30 transition-all">
+						<div class="text-[10px] font-headline text-gray-600 mb-4 tracking-[0.2em] uppercase">存储.节点</div>
+						<h4 class="text-on-surface font-bold font-headline mb-3 text-sm">Nextcloud Hub</h4>
+						<p class="text-xs text-on-surface-variant leading-relaxed">让您掌控全局的私有部署生产力平台。</p>
+						<div class="mt-6 pt-4 border-t border-outline-variant/10">
+							<a class="text-[10px] font-headline text-[#00FF00] uppercase hover:underline" href="#">启动实例</a>
+						</div>
+					</div>
+					<div class="group p-6 bg-surface-container border border-outline-variant/5 hover:border-[#00FF00]/30 transition-all">
+						<div class="text-[10px] font-headline text-gray-600 mb-4 tracking-[0.2em] uppercase">指标.节点</div>
+						<h4 class="text-on-surface font-bold font-headline mb-3 text-sm">Umami Analytics</h4>
+						<p class="text-xs text-on-surface-variant leading-relaxed">注重隐私、简单易用的私有部署网页分析替代方案。</p>
+						<div class="mt-6 pt-4 border-t border-outline-variant/10">
+							<a class="text-[10px] font-headline text-[#00FF00] uppercase hover:underline" href="#">启动实例</a>
+						</div>
+					</div>
+					<div class="group p-6 bg-surface-container border border-outline-variant/5 hover:border-[#00FF00]/30 transition-all">
+						<div class="text-[10px] font-headline text-gray-600 mb-4 tracking-[0.2em] uppercase">自动化.节点</div>
+						<h4 class="text-on-surface font-bold font-headline mb-3 text-sm">n8n 工作流</h4>
+						<p class="text-xs text-on-surface-variant leading-relaxed">公平代码协议工具，用于自动化不同系统间的任务。</p>
+						<div class="mt-6 pt-4 border-t border-outline-variant/10">
+							<a class="text-[10px] font-headline text-[#00FF00] uppercase hover:underline" href="#">启动实例</a>
+						</div>
+					</div>
+					<div class="group p-6 bg-surface-container border border-outline-variant/5 hover:border-[#00FF00]/30 transition-all">
+						<div class="text-[10px] font-headline text-gray-600 mb-4 tracking-[0.2em] uppercase">数据库.节点</div>
+						<h4 class="text-on-surface font-bold font-headline mb-3 text-sm">Pocketbase</h4>
+						<p class="text-xs text-on-surface-variant leading-relaxed">单文件开源后端，支持实时订阅。</p>
+						<div class="mt-6 pt-4 border-t border-outline-variant/10">
+							<a class="text-[10px] font-headline text-[#00FF00] uppercase hover:underline" href="#">启动实例</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

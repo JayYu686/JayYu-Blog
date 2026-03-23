@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="TERMINAL_EDITORIAL // 生活窍门">
+	<TopNav activePath="/life-hacks/" />
+	<Sidebar />
+	
+	<!-- Main Content Canvas -->
+	<main class="lg:ml-64 pt-24 min-h-screen px-6 lg:px-12 max-w-7xl">
+		<!-- Header Section -->
+		<header class="mb-16">
+			<div class="flex items-center gap-2 mb-4">
+				<div class="w-1.5 h-1.5 bg-primary-fixed-dim"></div>
+				<span class="font-label text-[10px] tracking-[0.3em] text-on-surface-variant uppercase">收藏 // 004</span>
+			</div>
+			<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter text-on-surface max-w-2xl leading-none">
+				生活_ <br/><span class="text-primary-container">工程学.</span>
+			</h1>
+			<p class="mt-6 text-on-surface-variant max-w-lg leading-relaxed font-body">
+				为现代开发者提供的精准建议。优化的工作流、高保真外设和认知维护。
+			</p>
+		</header>
+		
+		<!-- Bento Grid Layout -->
+		<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
+			<!-- Featured: Keyboard Setup -->
+			<div class="md:col-span-8 group relative overflow-hidden bg-surface-container p-8 rounded-xl border border-outline-variant/5 hover:border-outline-variant/20 transition-all duration-500">
+				<div class="flex justify-between items-start mb-12">
+					<div>
+						<div class="inline-flex px-2 py-0.5 bg-surface-container-high border border-outline-variant/10 rounded font-label text-[10px] text-on-tertiary-container mb-4">键盘</div>
+						<h3 class="text-3xl font-headline font-bold tracking-tight mb-2">HHKB Hybrid Type-S 静电容键盘</h3>
+						<p class="text-on-surface-variant text-sm max-w-md">终端用户的终极伴侣。45g Topre 静电容轴体，提供触觉上的静谧体验。</p>
+					</div>
+					<div class="text-right">
+						<span class="text-[10px] font-label text-on-surface-variant/40 tracking-widest">预估价值: $320</span>
+					</div>
+				</div>
+				<div class="aspect-video w-full bg-surface-container-low rounded-lg overflow-hidden relative">
+					<img alt="极简机械键盘" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="暗色桌面上的极简机械键盘" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgMyAWZ9GPyCF4XSm8BzMUtpPsPv48B5tKBV-byV4Ja3M63TvH91zpaePbWZ_eN91FQwZ9RfZF3f4ONV8rD1qv1OMG-DMfFzVDF5D7fMx1fj7nXsCKAsbBIV0GhLt0tOA4emYypzA6wEgWyepYr-PAhgrFfwrI93Z7u1A1WREGgBEYCJLpGLP-gSx0xTeR6lPKqNsAKPEUDxT1Tq7dJ81efOYFXFwdYRgDoNb5eRNFWGjv8Im-AInVniAonMYmq2yzd5EToWe2QS0H"/>
+					<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+				</div>
+				<div class="mt-8 flex gap-4">
+					<span class="text-[10px] font-label px-2 py-1 bg-surface-container-highest/50 border border-outline-variant/10 rounded">静电容</span>
+					<span class="text-[10px] font-label px-2 py-1 bg-surface-container-highest/50 border border-outline-variant/10 rounded">蓝牙 5.0</span>
+					<span class="text-[10px] font-label px-2 py-1 bg-surface-container-highest/50 border border-outline-variant/10 rounded">美规 ANSI</span>
+				</div>
+			</div>
+			
+			<!-- Side Card: Desk Setup -->
+			<div class="md:col-span-4 bg-surface-container-low p-6 rounded-xl relative overflow-hidden flex flex-col justify-between">
+				<div>
+					<div class="flex items-center gap-2 mb-6">
+						<span class="material-symbols-outlined text-primary-container text-lg">lightbulb</span>
+						<span class="font-label text-xs tracking-widest text-on-surface uppercase">窍门 // 01</span>
+					</div>
+					<h4 class="text-xl font-headline font-bold mb-4">20-20-20 护眼法则</h4>
+					<p class="text-on-surface-variant text-sm leading-relaxed">预防数字眼疲劳。每隔 20 分钟，远眺 20 英尺外的事物，持续 20 秒。长周期编译时的必备习惯。</p>
+				</div>
+				<div class="mt-8 pt-8 border-t border-outline-variant/10">
+					<a class="text-primary-container font-label text-[10px] tracking-widest uppercase flex items-center gap-2 group" href="#">
+						阅读文档 <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+					</a>
+				</div>
+			</div>
+			
+			<!-- Grid Items: Recommendations -->
+			<div class="md:col-span-4 bg-surface-container-high p-6 rounded-xl border border-outline-variant/5">
+				<div class="aspect-square bg-surface-container-low rounded mb-6 overflow-hidden">
+					<img alt="极简肖像" class="w-full h-full object-cover grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-500" data-alt="穿着极简科技服饰的人物肖像" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEdw71V0eRDxU3_iRp7hUBxB-_FnFBpJTd1Y2JR2cMAwAMOsgowJLvNcrc4OmSILiH-UT2mNchCRdSmV3ilyqmuiHUefbt5NXW2GtsxlhtAHacU_skcZG3Xa3ZRiP8mlEw1uBx8VRhHnh8-KY8yF2XTL0Mt3HSY7ngyHP1VXt2JL9lkzsd6GmI5-cDXrUWqfASZrNjCQOiI4Liph_zwoTDXlYUCa-NgNsKbaaB6EQYsFJdCc8aQ_O7pgW6Gry7xI5G5wI_cBn-VSj6"/>
+				</div>
+				<h5 class="font-headline font-bold text-lg mb-1">Unbound Merino</h5>
+				<p class="text-on-surface-variant text-xs mb-4 uppercase tracking-tighter">着装 // 羊毛胶囊系列</p>
+				<div class="flex justify-between items-center">
+					<span class="text-primary-container font-headline font-bold">¥610.00</span>
+					<button class="text-on-surface-variant hover:text-primary-container transition-colors">
+						<span class="material-symbols-outlined">add_circle</span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="md:col-span-4 bg-surface-container p-6 rounded-xl border border-outline-variant/5">
+				<div class="aspect-square bg-surface-container-low rounded mb-6 overflow-hidden">
+					<img alt="智能灯光设置" class="w-full h-full object-cover grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-500" data-alt="发出温暖氛围光的极简台灯" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWPn3MzEwDUcvImDyUVlOpvaQ35qaJTfHvmoa-6Ouho48Wp-_cCKZ_8dPnc3aIV5B8jLERQ0EjEslEDC_LG1cPtov6RQOWV1OB-B23IjIipqbMwKPAahgLtxS823XqNZEcFgguYWzMZG33f6P7oSe62r-OvrdEJ62z5Tr-MaR6kBei36l5By3YkidvUlvdcrCfkLXw89ORcClzQxEIvfFUZnnbOuROjDyQ0fHEy4_pQZZyhQNsgR6EKJCIUx49kGLM1NtxWLKe7NOZ"/>
+				</div>
+				<h5 class="font-headline font-bold text-lg mb-1">Govee Glide</h5>
+				<p class="text-on-surface-variant text-xs mb-4 uppercase tracking-tighter">灯光 // 壁挂灯条</p>
+				<div class="flex justify-between items-center">
+					<span class="text-primary-container font-headline font-bold">¥935.00</span>
+					<button class="text-on-surface-variant hover:text-primary-container transition-colors">
+						<span class="material-symbols-outlined">add_circle</span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="md:col-span-4 bg-surface-container p-6 rounded-xl border border-outline-variant/5 relative overflow-hidden group">
+				<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="relative z-10 flex flex-col h-full">
+					<div class="mb-4">
+						<span class="material-symbols-outlined text-on-surface-variant mb-4">auto_awesome</span>
+						<h4 class="font-headline font-bold text-xl mb-2">自动化咖啡</h4>
+						<p class="text-on-surface-variant text-sm">由 Python 驱动的意式浓缩循环，确保咖啡因摄入量的一致性。</p>
+					</div>
+					<div class="mt-auto">
+						<div class="flex -space-x-2">
+							<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">JS</div>
+							<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">PY</div>
+							<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">C+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Product Reviews Section -->
+		<section class="mb-24">
+			<div class="flex justify-between items-end mb-12 border-b border-outline-variant/10 pb-6">
+				<h2 class="text-3xl font-headline font-bold tracking-tight uppercase">硬件_评测</h2>
+				<a class="font-label text-[10px] text-on-surface-variant hover:text-primary-container transition-colors tracking-[0.2em]" href="#">查看全部日志</a>
+			</div>
+			<div class="space-y-12">
+				<!-- Review Row -->
+				<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+					<div class="md:col-span-4 aspect-video bg-surface-container rounded overflow-hidden">
+						<img alt="鼠标评测" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" data-alt="专业人体工学鼠标特写" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPALPrQWXCZQqFcgUiSRGjrC7xUVPYZqSyjzjPnLiKQHyjGqwKkYyNiva467W_NW7D9zClsrYHiIQA9BArx12ZPsZaJlf_U9R8zFH9MJVG8_CocenVJDqLSvQoNRt_3Usas-eDlUbEXqlA6y1dBChBinN4oy621HSbYc_I70UwOQfz8fiHGLWb8NqYXcdp3r7bI4vikOBORO4FPAal_-BjKq2L8eqCFeDVywDZAGr6_YHq0JDE8Esbi5TVkA22OUk9DN_WwfnrZ2Uh"/>
+					</div>
+					<div class="md:col-span-8">
+						<div class="font-label text-[10px] text-primary-fixed-dim tracking-widest mb-2 uppercase">输入系统</div>
+						<h3 class="text-2xl font-headline font-bold mb-3 hover:text-primary-container cursor-pointer transition-colors">罗技 MX Master 3S：办公之王</h3>
+						<p class="text-on-surface-variant leading-relaxed text-sm mb-4">经过 30 天的高强度编码，8K DPI 传感器和静音点击重新定义了办公鼠标的标杆。MagSpeed 滚轮的感觉就像物理魔法。</p>
+						<div class="flex items-center gap-6">
+							<div class="flex items-center gap-1">
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 0;">star</span>
+							</div>
+							<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">4.8 / 5.0 评分</span>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Review Row -->
+				<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+					<div class="md:col-span-4 aspect-video bg-surface-container rounded overflow-hidden">
+						<img alt="iPad Pro" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500" data-alt="用于草图笔记和编码的 iPad Pro" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXy6SbRhPBJnx6m3pOlUZ4rxp9MHezMG7ABj5rG_Zdzrm-mXqVq4UvQQPgBbaJ7-ScRbBkJgtUfZyPEyEQ9lhRoGkViYQe8cSt4aLjaikeTJpBQL7ACLTBvfMLcvfEB7asZq2wvOG7EtKF_oTHi93VF58Zhv23gNSNlrIkis_QiKDLLHYKopmxipjO93VPgNklhtPgNdbTFfXjay8agWOesewAtk-jCrNm7vbi94h_sec3dC70OsTH73K2N93gtg5QTvvVwE9CC9ja"/>
+					</div>
+					<div class="md:col-span-8">
+						<div class="font-label text-[10px] text-primary-fixed-dim tracking-widest mb-2 uppercase">移动工作站</div>
+						<h3 class="text-2xl font-headline font-bold mb-3 hover:text-primary-container cursor-pointer transition-colors">iPad Pro M4：生产力工具还是伪命题？</h3>
+						<p class="text-on-surface-variant leading-relaxed text-sm mb-4">探索移动开发环境的极限。iPadOS 终于准备好迎接终端了吗？还是说它只是一个查阅文档的漂亮屏幕？</p>
+						<div class="flex items-center gap-6">
+							<div class="flex items-center gap-1">
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+								<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 0.5;">star</span>
+							</div>
+							<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">4.2 / 5.0 评分</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<Footer />
+</Layout>
