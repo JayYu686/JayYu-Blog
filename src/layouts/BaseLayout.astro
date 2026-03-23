@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "个人极客日志" } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+    { name: t('nav.home'), path: lang === 'zh' ? '/' : `/${lang}/` },
+    { name: t('nav.projects'), path: lang === 'zh' ? '/projects' : `/${lang}/projects` },
+    { name: t('nav.blog'), path: lang === 'zh' ? '/blog' : `/${lang}/blog` },
+    { name: t('nav.bookmarks'), path: lang === 'zh' ? '/bookmarks' : `/${lang}/bookmarks` },
+    { name: t('nav.life'), path: lang === 'zh' ? '/life' : `/${lang}/life` }
+];
+
+const isActive = (path: string) => {
+    if (path === '/' || path === `/${lang}/`) return currentPath === path;
+    return currentPath.startsWith(path);
+};
+
+// Language toggle logic: simple switch between / and /en/
+const toggleUrl = lang === 'zh' 
+  ? '/en' + (currentPath === '/' ? '/' : currentPath) 
+  : currentPath.replace(/^\/en/, '') || '/';
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+        <div class="container">
+            <header>
+                <nav>
+                    <a href={lang === 'zh' ? '/' : `/${lang}/`} class="logo">jayyu</a>
+                    <ul>
+                        {navItems.map(item => (
+                            <li>
+                                <a href={item.path} class={isActive(item.path) ? 'active' : ''}>
+                                    {item.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <div class="lang-switch">
+                        <a href={toggleUrl}>[{lang === 'zh' ? 'EN' : '中文'}]</a>
+                    </div>
+                </nav>
+            </header>
+            
+            <main>
+		        <slot />
+            </main>
+
+            <footer>
+                <p>&copy; {new Date().getFullYear()} Jay Yu. {t('footer.rights')}</p>
+            </footer>
+        </div>
+	</body>
+</html>
+
+<style>
+    /* Styling moved to global.css for buttons */
+</style>

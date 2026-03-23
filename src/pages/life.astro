@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hacks = [
+    { title: "人体工学设置", content: "请始终确保显示器与您的视线齐平。使用机械键盘（例如 Keychron 系列）和垂直/人体工学鼠标，以防止长时间编码带来的腕部重复性劳损（RSI）。" },
+    { title: "50/10 规律", content: "使用番茄钟进行 50 分钟的深度专注工作，随后进行 10 分钟的散步或拉伸。这可以显著减少倦怠感并保持头脑敏锐。" },
+    { title: "咖啡与补充水分", content: "早晨用新鲜烘焙的咖啡豆手冲一杯咖啡，可以显著提高注意力。请务必在桌上放一个大水杯；充足的水分有助于防止下午的疲劳感。" },
+    { title: "数字极简主义", content: "关闭手机和 Mac 上非必要的通知。充分利用“勿扰模式”和“专注时间”来保持深度思考状态。" }
+];
+---
+
+<BaseLayout title="生活技巧 | Jay Yu">
+    <h1 class="page-title">life-hacks</h1>
+    <p>一些能够提升生产力与身心健康的好物、习惯与生活技巧。</p>
+
+    <div class="hacks-container">
+        {hacks.map(hack => (
+            <article class="hack-card">
+                <h2>{hack.title}</h2>
+                <div class="hack-content">
+                    {hack.content}
+                </div>
+            </article>
+        ))}
+    </div>
+</BaseLayout>
+
+<style>
+    .hacks-container {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .hack-card {
+        background-color: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 25px;
+    }
+
+    .hack-card h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        color: var(--accent-color);
+    }
+    
+    .hack-card h2::before {
+        content: "* ";
+        color: var(--text-color);
+    }
+
+    .hack-content {
+        color: var(--text-color);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+</style>

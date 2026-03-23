@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const projects = [
-    { name: "JayYu-Blog", desc: "我的个人纯静态博客，采用极客主题风格重构。", lang: "Astro", stars: 4, url: "https://github.com/JayYu686/JayYu-Blog" },
-    { name: "cli-util", desc: "提升开发者效率的命令行工具集。", lang: "Rust", stars: 12, url: "#" },
-    { name: "dotfiles", desc: "个人的 macOS / Linux 配置文件。", lang: "Shell", stars: 8, url: "#" },
-    { name: "algo-ds", desc: "数据结构与算法题解仓库。", lang: "TypeScript", stars: 15, url: "#" }
+    { name: "JayYu-Blog", desc: "My personal pure static blog rebuilt with a programmer aesthetic.", lang: "Astro", stars: 4, url: "https://github.com/JayYu686/JayYu-Blog" },
+    { name: "cli-util", desc: "Command line utilities to boost developer productivity.", lang: "Rust", stars: 12, url: "#" },
+    { name: "dotfiles", desc: "Personal macOS/Linux configuration files.", lang: "Shell", stars: 8, url: "#" },
+    { name: "algo-ds", desc: "Data structures and algorithms problems.", lang: "TypeScript", stars: 15, url: "#" }
 ];
 ---
 
-<BaseLayout title="项目 | Jay Yu">
+<BaseLayout title="Projects | Jay Yu">
     <h1 class="page-title">projects</h1>
-    <p>以下是我在 GitHub 上维护的部分开源项目合集。</p>
+    <p>A collection of my open-source projects on GitHub.</p>
 
     <div class="projects-grid">
         {projects.map(project => (

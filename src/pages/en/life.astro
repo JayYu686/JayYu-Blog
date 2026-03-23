@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const hacks = [
+    { title: "Ergonomic Setup", content: "Always ensure your monitor is at eye level. Use a mechanical keyboard (e.g., Keychron) and a vertical or ergonomic mouse to prevent RSI during long coding sessions." },
+    { title: "The 50/10 Rule", content: "Use a simple timer for 50 minutes of deep work followed by 10 minutes of walking or stretching. It dramatically reduces burnout and keeps you sharp." },
+    { title: "Coffee & Hydration", content: "A good pour-over coffee using freshly ground beans improves morning focus. Keep a large water bottle on your desk at all times; hydration prevents afternoon fatigue." },
+    { title: "Digital Minimalism", content: "Turn off non-essential notifications on your phone and Mac. Use quiet hours and 'Do Not Disturb' to maintain deep work states." }
+];
+---
+
+<BaseLayout title="Life Hacks | Jay Yu">
+    <h1 class="page-title">life-hacks</h1>
+    <p>Goodies, routines, and life hacks that improve productivity and well-being.</p>
+
+    <div class="hacks-container">
+        {hacks.map(hack => (
+            <article class="hack-card">
+                <h2>{hack.title}</h2>
+                <div class="hack-content">
+                    {hack.content}
+                </div>
+            </article>
+        ))}
+    </div>
+</BaseLayout>
+
+<style>
+    .hacks-container {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .hack-card {
+        background-color: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 25px;
+    }
+
+    .hack-card h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        color: var(--accent-color);
+    }
+    
+    .hack-card h2::before {
+        content: "* ";
+        color: var(--text-color);
+    }
+
+    .hack-content {
+        color: var(--text-color);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+</style>

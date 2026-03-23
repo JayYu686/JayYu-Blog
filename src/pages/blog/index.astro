@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="文章 | Jay Yu">
+    <h1 class="page-title">blog</h1>
+    <p>我的思考、随笔、教程与开发日志。</p>
+
+    <div class="posts-list">
+        {posts.map(post => (
+            <article class="post-item">
+                <div class="post-date">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                        {post.data.pubDate.toLocaleDateString('zh-CN', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                        })}
+                    </time>
+                </div>
+                <div class="post-info">
+                    <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+                    <p class="post-desc">{post.data.description}</p>
+                </div>
+            </article>
+        ))}
+        {posts.length === 0 && (
+            <p>未找到任何文章。 echo "Hello World" > first-post.md</p>
+        )}
+    </div>
+</BaseLayout>
+
+<style>
+    .posts-list {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .post-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        background-color: transparent;
+        border-left: 2px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .post-item:hover {
+        border-left-color: var(--accent-color);
+        background-color: var(--code-bg);
+    }
+
+    @media (min-width: 600px) {
+        .post-item {
+            flex-direction: row;
+            align-items: baseline;
+            gap: 30px;
+        }
+    }
+
+    .post-date {
+        color: #8b949e;
+        font-size: 0.95rem;
+        min-width: 120px;
+        font-family: var(--font-mono);
+    }
+
+    .post-info h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.4rem;
+    }
+
+    .post-info h2 a {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+    
+    .post-info h2 a:hover {
+        color: var(--accent-color);
+    }
+
+    .post-info h2::before {
+        content: "-> ";
+        color: var(--accent-color);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    .post-item:hover .post-info h2::before {
+        opacity: 1;
+    }
+
+    .post-desc {
+        margin: 0;
+        color: #8b949e;
+        font-size: 1rem;
+    }
+</style>
