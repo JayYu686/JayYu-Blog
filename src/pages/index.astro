@@ -50,6 +50,12 @@ jayyu
     .hero h1 {
         font-size: 2.5rem;
         margin-bottom: 10px;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .hero h1:hover {
+        color: var(--accent-color);
+        text-shadow: 0 0 16px var(--accent-glow), 0 0 32px rgba(88, 166, 255, 0.15);
     }
     
     .hero h1::before {
@@ -123,6 +129,15 @@ jayyu
 
     .home-section {
         margin-bottom: 40px;
+    }
+    
+    .home-section h2 {
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .home-section h2:hover {
+        color: var(--accent-color);
+        text-shadow: 0 0 12px var(--accent-glow);
     }
     
     .home-section h2::before {
