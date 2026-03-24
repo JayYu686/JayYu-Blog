@@ -7,8 +7,8 @@
 🌎 [English Version Below](#english-version)
 
 ## 在线访问
-- 主页：https://jayyu-blog.pages.dev/
-- 英文页：https://jayyu-blog.pages.dev/en/
+- 主页：https://jayyu.top/
+- 英文页：https://jayyu.top/en/
 
 ## 核心功能
 - **极客终端美学**：全局采用纯粹的 Terminal 风格设计，包含代码高亮框、闪烁光标与特殊的命令行提示符修饰。
