@@ -1,6 +1,6 @@
 ---
 title: "Hello, World! —— 欢迎来到我的博客"
-description: "写博客是一种对抗遗忘的仪式。在这里记录技术、分享生活。"
+description: "写博客是一种对抗遗忘的仪式。我希望在这里记录技术、分享生活。"
 pubDate: 2026-03-23
 heroImage: "/images/blog/hello_world_terminal.png"
 ---
