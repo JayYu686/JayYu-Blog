@@ -68,9 +68,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   nav {
     flex-direction: column;
     gap: 12px;
@@ -106,6 +107,13 @@ nav ul {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Nav pill buttons */
