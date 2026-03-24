@@ -1,7 +1,7 @@
 ---
 title: "Hello, World! 欢迎来到我的极客博客"
-description: "这是我全新重构的个人静态博客。在这里，我将记录开源项目、技术心得与极客日常。"
-pubDate: "2026-03-24"
+description: "这是我全新重构的个人静态博客。在这里，我将记录开源项目、技术心得与生活日常。"
+pubDate: "2026-03-23"
 ---
 
 # Hello, World!
@@ -46,6 +46,4 @@ if __name__ == "__main__":
     init_blog()
 ```
 
-再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 GitHub 上的线索找到我。
-
-`<span class="prompt">$</span> keep_coding<span class="cursor"></span>`
+再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 [GitHub](https://github.com/JayYu686?tab=repositories) 找到我。
