@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout title="Home | Jay Yu">
 	<div class="hero">
 		<h1>Hello, World!</h1>
-		<p class="subtitle">I'm Jay Yu. A developer focused on open-source, building tools, and sharing knowledge.</p>
+		<p class="subtitle">I'm Jay Yu. An AI graduate student and a developer who loves open-source, building tools, and sharing knowledge.</p>
         
         <div class="terminal-wrapper">
             <div class="terminal-header">
@@ -18,12 +18,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 jayyu
 
 <span class="prompt">$</span> cat skills.txt
-- Full-stack Web Development
-- Software Architecture
-- Clean Code & Open Source
+- Deep Learning → Few-Shot Action Recognition
+- Software Architecture & Web Development
+
+<span class="prompt">$</span> cat personality.txt
+- Passionate about tech, continuous learner
+- Open-source enthusiast, following tech community
 
 <span class="prompt">$</span> status --current
-Learning and building.
+Keep learning, keep growing.
 
 <span class="prompt">$</span> _<span class="cursor"></span></code></pre>
             </div>
@@ -50,6 +53,12 @@ Learning and building.
     .hero h1 {
         font-size: 2.5rem;
         margin-bottom: 10px;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .hero h1:hover {
+        color: var(--accent-color);
+        text-shadow: 0 0 16px var(--accent-glow), 0 0 32px rgba(88, 166, 255, 0.15);
     }
     
     .hero h1::before {
@@ -123,6 +132,15 @@ Learning and building.
 
     .home-section {
         margin-bottom: 40px;
+    }
+    
+    .home-section h2 {
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .home-section h2:hover {
+        color: var(--accent-color);
+        text-shadow: 0 0 12px var(--accent-glow);
     }
     
     .home-section h2::before {

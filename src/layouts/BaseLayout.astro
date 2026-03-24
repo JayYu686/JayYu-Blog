@@ -63,6 +63,13 @@ const toggleUrl = lang === 'zh'
                     <div class="lang-switch">
                         <a href={toggleUrl}>[{lang === 'zh' ? 'EN' : '中文'}]</a>
                     </div>
+                    <div class="contact-wrapper">
+                        <span class="contact-trigger">{lang === 'zh' ? '联系我' : 'Contact'}</span>
+                        <div class="contact-dropdown">
+                            <p>📧 <a href="mailto:jayyu07@163.com">jayyu07@163.com</a></p>
+                            <p>🐙 <a href="https://github.com/JayYu686" target="_blank">GitHub</a></p>
+                        </div>
+                    </div>
                 </nav>
             </header>
             
@@ -90,6 +97,18 @@ const toggleUrl = lang === 'zh'
         });
         document.addEventListener('mouseleave', () => {
             glow.style.opacity = '0';
+        });
+    }
+
+    // Mobile tap toggle for contact dropdown
+    const contactWrapper = document.querySelector('.contact-wrapper');
+    if (contactWrapper) {
+        contactWrapper.addEventListener('click', (e) => {
+            e.stopPropagation();
+            contactWrapper.classList.toggle('show');
+        });
+        document.addEventListener('click', () => {
+            contactWrapper.classList.remove('show');
         });
     }
 </script>
@@ -124,5 +143,71 @@ const toggleUrl = lang === 'zh'
         animation: fadeSlideIn 0.3s ease-out;
         position: relative;
         z-index: 1;
+    }
+
+    /* Contact dropdown */
+    .contact-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .contact-trigger {
+        color: #8b949e;
+        font-size: 0.85rem;
+        font-weight: bold;
+        padding: 4px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        user-select: none;
+    }
+
+    .contact-trigger:hover {
+        color: #fff;
+        background-color: rgba(88, 166, 255, 0.08);
+    }
+
+    .contact-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 8px);
+        background-color: #161b22;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 14px 18px;
+        min-width: 220px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(88, 166, 255, 0.08);
+        z-index: 100;
+    }
+
+    .contact-dropdown p {
+        margin: 0 0 8px 0;
+        font-size: 0.85rem;
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+
+    .contact-dropdown p:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-dropdown a {
+        color: var(--accent-color);
+        text-decoration: none;
+    }
+
+    .contact-dropdown a:hover {
+        text-decoration: underline;
+    }
+
+    /* Desktop hover */
+    .contact-wrapper:hover .contact-dropdown {
+        display: block;
+    }
+
+    /* Mobile tap */
+    .contact-wrapper.show .contact-dropdown {
+        display: block;
     }
 </style>
