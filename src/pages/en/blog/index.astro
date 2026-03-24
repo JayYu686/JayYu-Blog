@@ -14,24 +14,22 @@ const posts = (await getCollection('blog')).sort(
     <div class="posts-list">
         {posts.map(post => (
             <article class="post-item">
-                <div class="post-left-col">
-                    <div class="post-date">
-                        <time datetime={post.data.pubDate.toISOString()}>
+                <a href={`/blog/${post.id}`} class="post-link">
+                    <div class="post-thumbnail">
+                        <img src={post.data.heroImage || "/cover.png"} onerror="this.onerror=null;this.src='/cover.png';" alt="" />
+                    </div>
+                    <div class="post-info">
+                        <time class="post-date" datetime={post.data.pubDate.toISOString()}>
                             {post.data.pubDate.toLocaleDateString('en-us', {
                                 year: 'numeric',
                                 month: 'short',
                                 day: 'numeric',
                             })}
                         </time>
+                        <h2>{post.data.title}</h2>
+                        <p class="post-desc">{post.data.description}</p>
                     </div>
-                    <div class="post-thumbnail">
-                        <img src={post.data.heroImage || "/cover.png"} onerror="this.onerror=null;this.src='/cover.png';" alt="" />
-                    </div>
-                </div>
-                <div class="post-info">
-                    <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
-                    <p class="post-desc">{post.data.description}</p>
-                </div>
+                </a>
             </article>
         ))}
         {posts.length === 0 && (
@@ -43,75 +41,100 @@ const posts = (await getCollection('blog')).sort(
 <style>
     .posts-list {
         margin-top: 40px;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 30px;
     }
 
     .post-item {
+        background-color: transparent;
+        border: 1px dashed var(--border-color);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-        background-color: transparent;
-        border-left: 2px solid transparent;
-        transition: all 0.2s ease;
     }
     
     .post-item:hover {
-        border-left-color: var(--accent-color);
+        border-style: solid;
+        border-color: var(--accent-color);
         background-color: var(--code-bg);
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.08), 0 0 30px rgba(88, 166, 255, 0.04);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(88, 166, 255, 0.1);
     }
 
-    @media (min-width: 600px) {
-        .post-item {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 30px;
-        }
-        .post-info {
-            flex-grow: 1;
-        }
-    }
-
-    .post-left-col {
+    .post-link {
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        flex-shrink: 0;
-    }
-
-    .post-date {
-        color: #8b949e;
-        font-size: 0.95rem;
-        font-family: var(--font-mono);
-    }
-
-    @media (min-width: 600px) {
-        .post-left-col {
-            width: 150px;
-        }
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
     }
 
     .post-thumbnail {
         width: 100%;
-        height: auto;
         aspect-ratio: 16 / 9;
-        border-radius: 16px;
         overflow: hidden;
-        display: none;
-    }
-
-    @media (min-width: 600px) {
-        .post-thumbnail {
-            display: block;
-        }
+        border-bottom: 1px dashed var(--border-color);
     }
 
     .post-thumbnail img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .post-item:hover .post-thumbnail img {
+        transform: scale(1.05);
+    }
+
+    .post-info {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 12px;
+    }
+
+    .post-date {
+        color: #8b949e;
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+    }
+
+    .post-info h2 {
+        margin: 0;
+        font-size: 1.3rem;
+        color: var(--text-color);
+        transition: color 0.2s ease;
+    }
+
+    .post-item:hover .post-info h2 {
+        color: var(--accent-color);
+    }
+
+    .post-info h2::before {
+        content: "-> ";
+        color: var(--accent-color);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    .post-item:hover .post-info h2::before {
+        opacity: 1;
+    }
+
+    .post-desc {
+        margin: 0;
+        color: #8b949e;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>
