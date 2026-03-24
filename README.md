@@ -78,25 +78,27 @@ npm run build
 
 ## 数据维护说明
 
-博客文章文件位于：`src/content/blog/`
+博客文章文件统一位于：`src/content/blog/`
 
-以 Markdown (`.md` 或 `.mdx`) 格式编写文章。
-Frontmatter 结构标准规范要求如下：
+以 Markdown (`.md` 或 `.mdx`) 格式编写文章。支持在文章正文中直接使用 Markdown 或 HTML 语法插入网络图片，前端已全局配置自适应防溢出与圆角边框样式。
+
+标准的 Frontmatter 结构规范要求如下：
 
 ```yaml
 ---
 title: "你的文章核心标题"
-pubDate: 2026-03-24
 description: "文章的外部摘要与简短描述"
-author: "Jay Yu"
-image:
-    url: "/images/cover.png" # 可选，封面图片
-    alt: "图片描述"
-tags: ["CSS", "Astro", "前端架构"]
+pubDate: 2026-03-24
+heroImage: "https://example.com/cover.jpg" # 可选，博客文章封面图（支持本地绝对路径或网络链接）
 ---
-
-文章正文内容...
 ```
+
+## 更新日志 (Changelog)
+
+- **2026-03-24**: 
+  - 🎨 **视觉升级**：新增全局鼠标跟随光晕（Cursor Glow Orb），并在所有卡片和列表项组件中实装悬停发光（Hover Glow）交互动效。
+  - 🖼️ **文章封面**：重构了博客文章渲染引擎与布局，全面支持通过 Frontmatter 的 `heroImage` 字段为文章详情页及列表首图展示自适应比例的高质量封面。
+  - 📋 **导航与交互**：跨终端新增“联系我”悬浮展开组件，并升级双语生活志栏目（拆分习惯与好物），大幅扩展了极客开发与架构设计资源导航。
 
 ---
 <br>
@@ -144,16 +146,22 @@ npm run build
 
 ## Content Maintenance
 
-Markdown blog paths are located in: `src/content/blog/`.
+Markdown blog configurations and paths are located in: `src/content/blog/`. You can embed remote images in your articles seamlessly using standard Markdown syntax, as the global styles will automatically apply rounded borders and maintain responsive width constraints.
 
 Required Frontmatter structure:
 
 ```yaml
 ---
 title: "Your Post Title"
-pubDate: 2026-03-24
 description: "Summary of the post content"
-author: "Jay Yu"
-tags: ["Tag1", "Tag2"]
+pubDate: 2026-03-24
+heroImage: "/images/blog/cover.png" # Optional cover image (supports local path or remote URL)
 ---
 ```
+
+## Changelog
+
+- **2026-03-24**: 
+  - 🎨 **Aesthetic Overhaul**: Implemented a global cursor-following ambient radial glow and interactive hover glow effects across all item cards.
+  - 🖼️ **Cover Images**: Refactored the blog post layout and index page to natively support robust, 16:9 responsive thumbnails utilizing the `heroImage` frontmatter property.
+  - 📋 **Navigation & Content**: Appended a sleek "Contact Me" dropdown to the primary navigation, restructured the 'Life' guide into Habits & Goodies arrays, and heavily expanded the developer bookmark toolkit.
