@@ -1,4 +1,8 @@
-# Jay Yu の 个人博客
+<p align="center">
+	<img src="./public/favicon.png" alt="Jay Yu logo" width="108" height="108" />
+</p>
+
+# Jay Yu の 个人博客站
 
 🌎 [English Version Below](#english-version)
 
