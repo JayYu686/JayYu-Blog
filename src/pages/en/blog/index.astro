@@ -24,11 +24,9 @@ const posts = (await getCollection('blog')).sort(
                             })}
                         </time>
                     </div>
-                    {post.data.heroImage && (
-                        <div class="post-thumbnail">
-                            <img src={post.data.heroImage} alt="" />
-                        </div>
-                    )}
+                    <div class="post-thumbnail">
+                        <img src={post.data.heroImage || "/cover.png"} onerror="this.onerror=null;this.src='/cover.png';" alt="" />
+                    </div>
                 </div>
                 <div class="post-info">
                     <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>

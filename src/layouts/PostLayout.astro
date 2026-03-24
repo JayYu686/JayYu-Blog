@@ -19,11 +19,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                     </span>
                 )}
             </div>
-            {heroImage && (
-                <div class="hero-image-wrapper">
-                    <img src={heroImage} alt={title} class="hero-image" />
-                </div>
-            )}
+            <div class="hero-image-wrapper">
+                <img src={heroImage || "/cover.png"} onerror="this.onerror=null;this.src='/cover.png';" alt={title} class="hero-image" />
+            </div>
         </header>
 
         <div class="post-content">
