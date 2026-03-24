@@ -18,7 +18,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -38,7 +38,7 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   color: #fff;
-  font-weight: 600;
+  font-weight: bold;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -109,7 +109,8 @@ nav ul {
 /* Nav pill buttons */
 nav ul a, .lang-switch a {
   color: #8b949e;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  font-weight: bold;
   padding: 4px 12px;
   background-color: transparent;
   border: none;
