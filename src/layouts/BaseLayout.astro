@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -41,6 +42,7 @@ const toggleUrl = lang === 'zh'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
         <div class="container">
@@ -75,4 +77,17 @@ const toggleUrl = lang === 'zh'
 
 <style>
     /* Styling moved to global.css for buttons */
+    @keyframes fadeSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    main {
+        animation: fadeSlideIn 0.3s ease-out;
+    }
 </style>
