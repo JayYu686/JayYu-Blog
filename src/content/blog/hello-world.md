@@ -1,7 +1,8 @@
 ---
-title: "Hello, World! 欢迎来到我的个人博客"
-description: "这是我全新重构的个人博客。在这里，我将记录开源项目、技术心得与生活日常。"
-pubDate: "2026-03-23"
+title: "Hello, World! —— 欢迎来到我的博客"
+description: "写博客是一种对抗遗忘的仪式。在这里记录技术、分享生活。"
+pubDate: 2026-03-23
+heroImage: "/images/blog/hello_world_terminal.png"
 ---
 
 # Hello, World!
