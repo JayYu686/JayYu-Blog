@@ -1,13 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const hacks = [
-    { title: "Minimalist Skincare", content: "Follow the 'Morning C, Night A' routine: In the morning, wash your face with water, apply pure Vitamin C serum, and finish with sunscreen. At night, cleanse with an amino acid cleanser, apply Retinol, and moisturize with CeraVe PM lotion or La Roche-Posay B5 cream." },
-    { title: "Digital Minimalism", content: "Turn off all non-essential notifications on your phone and Mac. Make full use of the iOS/macOS Focus Mode to carve out uninterrupted blocks for deep work—this is more effective than any time management app." },
-    { title: "Ergonomic Setup", content: "Always ensure the top of your monitor is at eye level. Use a low-profile mechanical keyboard (e.g., Keychron K3 Pro) paired with a Magic Trackpad to prevent repetitive strain injuries (RSI)." },
-    { title: "The 50/10 Rule", content: "Work in deep focus for 50 minutes, followed by a strict 10-minute break away from screens to stretch or hydrate. This prevents the typical afternoon brain drain." },
-    { title: "Coffee & Hydration", content: "A fresh pour-over light roast coffee in the morning efficiently boosts focus, but keeping a large 1L water bottle on your desk is even more important. Adequate hydration is the ultimate fuel for mental clarity." },
-    { title: "High-Quality Sleep", content: "Invest in blackout curtains and keep your bedroom cool. Use high-quality Ohropax silicone earplugs if you're a light sleeper. Deep sleep is the ultimate skincare and brain booster." }
+const lifeCategories = [
+    { category: "Life Habits", items: [
+        { title: "Minimalist Skincare", content: "Follow the 'Morning C, Night A' routine: In the morning, wash your face with water, apply pure Vitamin C serum, and finish with sunscreen. At night, cleanse with an amino acid cleanser, apply Retinol, and moisturize with CeraVe PM lotion or La Roche-Posay B5 cream." },
+        { title: "Digital Minimalism", content: "Turn off all non-essential notifications on your phone and Mac. Make full use of the iOS/macOS Focus Mode to carve out uninterrupted blocks for deep work—this is more effective than any time management app." },
+        { title: "The 50/10 Rule", content: "Work in deep focus for 50 minutes, followed by a strict 10-minute break away from screens to stretch or hydrate. This prevents the typical afternoon brain drain." },
+        { title: "Weekly Tech Review", content: "Spend 30 minutes every weekend to log and review the new architectural patterns learned or the tricky bugs resolved. It's the most effective way to build a robust personal knowledge base." },
+        { title: "Offline Mornings", content: "Avoid checking social media and emails for the first hour after waking up. Use this time to have a healthy breakfast, make pour-over coffee, and plan the three most important tasks for the day." }
+    ]},
+    { category: "Life Goodies", items: [
+        { title: "MacBook Pro & 4K Monitor", content: "An M-series MacBook Pro paired with a 4K monitor is the ultimate productivity setup for developers, offering great battery life and a reliable coding environment anywhere." },
+        { title: "Ergonomic Setup", content: "Always ensure the top of your monitor is at eye level. Use a low-profile mechanical keyboard (e.g., Keychron K3 Pro) paired with a Magic Trackpad to prevent repetitive strain injuries (RSI)." },
+        { title: "Active Noise Cancelling", content: "Invest in high-quality ANC headphones like Sony WH-1000XM5 or AirPods Pro. Cut off the surrounding noise with one click and get into the flow state instantly." },
+        { title: "Coffee & 1L Water Bottle", content: "A fresh pour-over light roast coffee in the morning efficiently boosts focus, but keeping a large 1L water bottle on your desk is even more important. Adequate hydration is the ultimate fuel for mental clarity." },
+        { title: "High-Quality Sleep Aids", content: "Invest in blackout curtains and keep your bedroom cool. Use high-quality Ohropax silicone earplugs if you're a light sleeper. Deep sleep is the ultimate skincare and brain booster." }
+    ]}
 ];
 ---
 
@@ -16,13 +24,20 @@ const hacks = [
     <p>Goodies, routines, and life experiences that improve productivity and well-being.</p>
 
     <div class="hacks-container">
-        {hacks.map(hack => (
-            <article class="hack-card">
-                <h2>{hack.title}</h2>
-                <div class="hack-content">
-                    {hack.content}
+        {lifeCategories.map(section => (
+            <section class="life-section">
+                <h2 class="section-title">{section.category}</h2>
+                <div class="cards-grid">
+                    {section.items.map(hack => (
+                        <article class="hack-card">
+                            <h3>{hack.title}</h3>
+                            <div class="hack-content">
+                                {hack.content}
+                            </div>
+                        </article>
+                    ))}
                 </div>
-            </article>
+            </section>
         ))}
     </div>
 </BaseLayout>
@@ -30,6 +45,25 @@ const hacks = [
 <style>
     .hacks-container {
         margin-top: 40px;
+    }
+
+    .life-section {
+        margin-bottom: 50px;
+    }
+
+    .section-title {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+    }
+
+    .section-title::before {
+        content: "## ";
+        color: var(--accent-color);
+    }
+
+    .cards-grid {
         display: flex;
         flex-direction: column;
         gap: 25px;
@@ -48,14 +82,14 @@ const hacks = [
         box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
     }
 
-    .hack-card h2 {
+    .hack-card h3 {
         margin-top: 0;
         margin-bottom: 15px;
         font-size: 1.3rem;
         color: var(--accent-color);
     }
     
-    .hack-card h2::before {
+    .hack-card h3::before {
         content: "* ";
         color: var(--text-color);
     }

@@ -46,4 +46,4 @@ if __name__ == "__main__":
     init_blog()
 ```
 
-再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 [GitHub](https://github.com/JayYu686?tab=repositories) 找到我。
+再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 [GitHub](https://github.com/JayYu686) 找到我。

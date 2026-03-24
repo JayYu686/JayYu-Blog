@@ -1,13 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const hacks = [
-    { title: "极简护肤思路", content: "记住早C晚A：早上用清水洗脸，使用原型VC精华，然后涂上防晒霜；晚上使用氨基酸洗面奶清洁，使用A醇产品，最后使用适乐肤 PM 乳或理肤泉 B5 面霜保湿。" },
-    { title: "数字极简主义", content: "关闭手机和 Mac 上所有非必要的通知弹窗。充分利用 iOS/macOS 的“专注模式”，将固定时间段留给深度思考，这比任何时间管理软件都管用。" },
-    { title: "人体工学设置", content: "请始终确保显示器顶部与视线齐平。推荐使用 Keychron 矮轴机械键盘（如 K3 Pro）搭配苹果妙控板，以防止长时间编码带来的腕管综合征（RSI）。" },
-    { title: "50/10 黄金节律", content: "摒弃传统的无休止工作法，使用 50 分钟深度专注 + 10 分钟彻底离开屏幕去散步或喝水的节奏，能显著消除每天下午的脑力衰竭感。" },
-    { title: "咖啡与补水", content: "早晨手冲一杯新鲜浅焙咖啡豆可以高效启动大脑，但更重要的是在桌上永远放一个 1L 的大水杯，充足的水分是大脑维持清醒的最强燃料。" },
-    { title: "高质量睡眠", content: "投资高质量的遮光窗帘并保持卧室凉爽。如果对外界声音敏感，买一副安耳悠（Ohropax）硅胶耳塞。深度睡眠才是最好的护肤品和补脑液。" }
+const lifeCategories = [
+    { category: "生活习惯", items: [
+        { title: "极简护肤思路", content: "记住早C晚A：早上用清水洗脸，使用原型VC精华，然后涂上防晒霜；晚上使用氨基酸洗面奶清洁，使用A醇产品，最后使用适乐肤 PM 乳或理肤泉 B5 面霜保湿。" },
+        { title: "数字极简主义", content: "关闭手机和 Mac 上所有非必要的通知弹窗。充分利用 iOS/macOS 的“专注模式”，将固定时间段留给深度思考，这比任何时间管理软件都管用。" },
+        { title: "50/10 黄金节律", content: "摒弃传统的无休止工作法，使用 50 分钟深度专注 + 10 分钟彻底离开屏幕去散步或喝水的节奏，能显著消除每天下午的脑力衰竭感。" },
+        { title: "每周技术回顾", content: "无论是博客、手写笔记还是 Obsidian，每周花 30 分钟总结这周踩过的坑与新学到的架构模式，这是构建个人独立知识库核心的最优路径。" },
+        { title: "晨间离线状态", content: "醒来的第一个小时绝对不看手机的各种信息流。可以用这段时间吃一顿健康的早餐、冲一杯咖啡，然后冷静地规划今天最重要的三件事。" }
+    ]},
+    { category: "生活好物", items: [
+        { title: "MacBook Pro + 全功能显示器", content: "M 系列芯片的 MacBook Pro 搭配一台 4K 护眼显示器是程序员的最佳生产力组合，既有绝佳的脱电续航又能随时随地进入顶配工作状态。" },
+        { title: "人体工学硬件设置", content: "请始终确保显示器顶部与视线齐平。推荐使用 Keychron 矮轴机械键盘（如 K3 Pro）搭配苹果妙控板，以防止长时间编码带来的腕管综合征（RSI）。" },
+        { title: "高品质抗噪设备", content: "投资一副优秀的降噪耳机（如 Sony WH-1000XM5 或 AirPods Pro），在吵闹的办公室或咖啡厅一键切断外界噪音，瞬间进入心流专注模式。" },
+        { title: "手冲咖啡与水饮", content: "早晨手冲一杯新鲜浅焙咖啡豆可以高效启动大脑，但更重要的是在桌上永远放一个 1L 的大水杯，补充充足的水分是大脑维持清醒的最强燃料。" },
+        { title: "高质量沉浸睡眠", content: "首要投资高质量的遮光窗帘并保持卧室凉爽。如果对外界声音敏感，买一副安耳悠（Ohropax）硅胶耳塞。深度睡眠才是最好的护肤品和补脑液。" }
+    ]}
 ];
 ---
 
@@ -16,13 +24,20 @@ const hacks = [
     <p>一些能够提升生产力与身心健康的好物、习惯与生活分享。</p>
 
     <div class="hacks-container">
-        {hacks.map(hack => (
-            <article class="hack-card">
-                <h2>{hack.title}</h2>
-                <div class="hack-content">
-                    {hack.content}
+        {lifeCategories.map(section => (
+            <section class="life-section">
+                <h2 class="section-title">{section.category}</h2>
+                <div class="cards-grid">
+                    {section.items.map(hack => (
+                        <article class="hack-card">
+                            <h3>{hack.title}</h3>
+                            <div class="hack-content">
+                                {hack.content}
+                            </div>
+                        </article>
+                    ))}
                 </div>
-            </article>
+            </section>
         ))}
     </div>
 </BaseLayout>
@@ -30,6 +45,25 @@ const hacks = [
 <style>
     .hacks-container {
         margin-top: 40px;
+    }
+
+    .life-section {
+        margin-bottom: 50px;
+    }
+
+    .section-title {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+    }
+
+    .section-title::before {
+        content: "## ";
+        color: var(--accent-color);
+    }
+
+    .cards-grid {
         display: flex;
         flex-direction: column;
         gap: 25px;
@@ -48,14 +82,14 @@ const hacks = [
         box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
     }
 
-    .hack-card h2 {
+    .hack-card h3 {
         margin-top: 0;
         margin-bottom: 15px;
         font-size: 1.3rem;
         color: var(--accent-color);
     }
     
-    .hack-card h2::before {
+    .hack-card h3::before {
         content: "* ";
         color: var(--text-color);
     }
