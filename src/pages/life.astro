@@ -40,6 +40,12 @@ const hacks = [
         border: 1px solid var(--border-color);
         border-radius: 6px;
         padding: 25px;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hack-card:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
     }
 
     .hack-card h2 {
