@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -42,7 +41,6 @@ const toggleUrl = lang === 'zh'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<ViewTransitions />
 	</head>
 	<body>
         <div class="container">
