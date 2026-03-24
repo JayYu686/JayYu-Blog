@@ -17,6 +17,7 @@
 - **双语国际化 (i18n)**：支持全局在中文 `/` 与英文 `/en/` 语言界面之间无缝切换。
 - **内容集合模块化**：博客文章基于 Astro 6 Content Collections 强大的类型校验与 MDX 自动渲染。
 - **开源生态索引**：项目页面集成并展示个人核心开源项目库的最新动态与信息。
+- **极客生活志**：收录了诸如极简护肤、人体工学配置等提升极客生产力的高质量生活好物与指南。
 
 ## 技术栈
 - Astro 6
@@ -115,6 +116,7 @@ tags: ["CSS", "Astro", "前端架构"]
 - **Bilingual i18n**: Built-in logic bridging Chinese `/` and English `/en/` localization paths natively.
 - **Content Collections**: Fully strictly typed Markdown/MDX blog generation backed by Astro 6.
 - **Open Source Catalog**: Project views showcasing my core external open-source projects on GitHub.
+- **Geek Lifestyle Handbook**: A curated collection of productivity-boosting routines and goodies, including minimalist skincare and ergonomic sets.
 
 ## Tech Stack
 - Astro 6

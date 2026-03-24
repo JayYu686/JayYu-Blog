@@ -259,7 +259,7 @@ pubDate: "2026-03-24"
 
 ## 七、给初学者的第一段代码：用 JavaScript 写一个“原型分类”示意
 
-真实研究代码通常用 Python + PyTorch，但为了符合你的博客排版风格，这里我用 **JavaScript 风格的示意代码** 来讲清核心思想。
+真实研究代码通常用 Python + PyTorch，但为了符合博客排版风格，这里我用 **JavaScript 风格的示意代码** 来讲清核心思想。
 
 ```js
 function average(vectors) {
