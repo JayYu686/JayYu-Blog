@@ -1,29 +1,51 @@
 ---
-title: "Hello, World! Rebooting my Blog"
-description: "Welcome to my new programmer style blog built with Astro."
-pubDate: "2026-03-23"
+title: "Hello, World! 欢迎来到我的极客博客"
+description: "这是我全新重构的个人静态博客。在这里，我将记录开源项目、技术心得与极客日常。"
+pubDate: "2026-03-24"
 ---
 
-Welcome to my completely redesigned personal blog!
+# Hello, World!
 
-I decided to tear down the old design and build something that reflects what I love: clean, terminal-inspired, pure coding aesthetics.
+欢迎来到我的个人博客空间！很高兴能在这里与你相遇。👋
 
-## What's New?
+这个网站是我最近从零开始，使用 **Astro** 框架完全手工重构的全新版本。作为一个热爱敲代码、经常混迹于开源社区的开发者，我决定抛弃原本那些臃肿又花哨的主题模板，转而亲手打造一个**纯粹、极简且带有浓厚极客终端（Terminal）美学色彩**的个人数字花园。
 
-- **Dark Mode by Default**: Easier on the eyes for those late-night coding sessions.
-- **Monospace Typography**: Because everything looks better as code.
-- **Fast and Static**: Built on top of [Astro](https://astro.build) for zero JS by default.
+## 为什么是“极客终端”风格？
 
-### Code Snippet Test
+我希望这个博客能像我们程序员每天面对的 IDE 或命令行界面一样：
+- **无噪音**：原生的深色模式 (`Dark Mode`) 和清晰克制的排版，切断一切干扰阅读的多余元素。
+- **专注内容**：纯静态自动渲染生成，零 JavaScript 负担，极速加载。
+- **细节至上**：中英混排字体优化（英文代码等宽 Mono + 中文阅读原生宋体），配合恰到好处的页面切换动效与发光悬停特效（Glow Effects）。
 
-Let's test if our markdown code blocks look good with the new aesthetic:
+## 本站包含哪些内容？
 
-```js
-function greet(name) {
-    console.log(`Hello, ${name}!`);
-}
+在这个小天地里，我会不定期分享以下几类内容：
 
-greet("World");
+1. **开源项目**：我的各个开源研究项目以及周末折腾出来的高效率命令行工具（你可以在顶部导航的 `[项目]` 页面同步看到我最新的 GitHub 动态）。
+2. **技术博文**：涵盖如“深度学习的小样本行为识别”、“系统架构设计”、“全栈开发”等我的专业研究记录与踩坑心得。
+3. **极客收藏**：一些我觉得不仅酷炫，还能切实极大提升生产力的神仙级效率工具与网站（在 `[收藏]` 页面记录）。
+4. **生活指南**：远离键盘时，我对生活运转规律的一点点碎片感悟与奇思妙想。
+
+### Markdown 代码框测试
+
+既然是技术极客的博客，怎么能少得了测试一段代码高亮的渲染效果呢？
+
+```python
+# 博客首次运行启动入口
+def init_blog():
+    visitor = "Hacker"
+    print(f"Hello, {visitor}! Welcome to my world.")
+    
+    return {
+        "status": "Online",
+        "motivation": ["Build", "Learn", "Share"],
+        "passion": float('inf')
+    }
+
+if __name__ == "__main__":
+    init_blog()
 ```
 
-Stay tuned for more updates, technical articles, and open-source releases!
+再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 GitHub 上的线索找到我。
+
+`<span class="prompt">$</span> keep_coding<span class="cursor"></span>`
