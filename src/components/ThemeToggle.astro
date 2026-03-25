@@ -1,0 +1,67 @@
+---
+interface Props {
+    lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const textLight = lang === 'zh' ? '浅' : 'Light';
+const textDark = lang === 'zh' ? '深' : 'Dark';
+---
+
+<button class="theme-toggle" id="themeToggle" title={lang === 'zh' ? '切换主题' : 'Toggle Theme'}>
+    <span class="theme-text light-label">{textLight}</span>
+    <span class="theme-text dark-label">{textDark}</span>
+</button>
+
+<style>
+    .theme-toggle {
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        padding: 4px 12px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: var(--secondary-text);
+        transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+        color: var(--heading-color);
+        background-color: var(--nav-hover-bg);
+    }
+
+    /* Dark theme (default) */
+    :root[data-theme="dark"] .light-label,
+    :root:not([data-theme]) .light-label {
+        display: inline;
+    }
+    :root[data-theme="dark"] .dark-label,
+    :root:not([data-theme]) .dark-label {
+        display: none;
+    }
+
+    /* Light theme */
+    :root[data-theme="light"] .light-label {
+        display: none;
+    }
+    :root[data-theme="light"] .dark-label {
+        display: inline;
+    }
+</style>
+
+<script>
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', savedTheme);
+
+    toggle?.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+</script>

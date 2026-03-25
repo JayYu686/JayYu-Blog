@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const text = lang === 'zh'
+    ? { title: '404 | 页面未找到', heading: '404', sub: '页面未找到', desc: '你要找的页面不存在，可能已被移动或删除。', back: '返回首页' }
+    : { title: '404 | Page Not Found', heading: '404', sub: 'Page Not Found', desc: "The page you're looking for doesn't exist. It may have been moved or deleted.", back: 'Back to Home' };
+
+const homePath = lang === 'zh' ? '/' : '/en/';
+---
+
+<BaseLayout title={text.title}>
+    <div class="not-found">
+        <div class="terminal-error">
+            <pre><code><span class="prompt">$</span> curl {Astro.url.pathname}
+<span class="error">Error 404</span>: {text.sub}
+
+<span class="prompt">$</span> echo "{text.desc}"
+{text.desc}
+
+<span class="prompt">$</span> cd ~
+<span class="hint"><a href={homePath}>{text.back}</a></span></code></pre>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .not-found {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+    }
+
+    .terminal-error {
+        background-color: #0d1117;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 40px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .terminal-error pre {
+        margin: 0;
+        background: transparent;
+        border: none;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .prompt {
+        color: var(--accent-color);
+    }
+
+    .error {
+        color: #f85149;
+        font-weight: bold;
+    }
+
+    .hint a {
+        color: var(--accent-color);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--accent-color);
+    }
+
+    .hint a:hover {
+        border-bottom-style: solid;
+    }
+</style>

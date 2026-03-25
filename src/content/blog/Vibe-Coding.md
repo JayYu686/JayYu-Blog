@@ -2,7 +2,7 @@
 title: "别把 Vibe Coding 当成魔法：AI 时代构建网页与应用的技术栈优先原则"
 description: "Vibe Coding 让软件开发更快，但真正决定项目能否持续迭代的，仍然是技术栈规划、上下文管理与工程边界。这篇文章从前端、后端、数据到 Prompt、Context、Skills、MCP，讲清楚如何把 AI 变成生产力，而不是技术债放大器。"
 pubDate: 2026-03-25
-heroImage: "/cover.png"
+heroImage: "/cover.webp"
 ---
 
 在 2026 年谈网页和应用开发，几乎已经不可能绕开 AI。

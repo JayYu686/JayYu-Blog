@@ -2,7 +2,7 @@
 title: "从“看几遍就会”到“小样本行为识别”：给初学者的一篇入门指南"
 description: "在机器学习里，我们经常默认一件事：数据越多，模型越聪明。但现实常常不是这样。"
 pubDate: "2026-03-24"
-heroImage: "/cover.png"
+heroImage: "/cover.webp"
 ---
 
 

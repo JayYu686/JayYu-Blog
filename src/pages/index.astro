@@ -1,46 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalCard from '../components/TerminalCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import BlogPostItem from '../components/BlogPostItem.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { getHomeContent, getHomeSectionSuffix } from '../data/home';
+import { getProjects } from '../data/projects';
+import { getCollection } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+const content = getHomeContent(lang);
+const suffix = getHomeSectionSuffix(lang);
+const blogBasePath = lang === 'zh' ? '/blog' : `/${lang}/blog`;
+
+// Dynamic latest content
+const latestProject = getProjects(lang)[0];
+const latestPost = (await getCollection('blog'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
+const sectionLabels = lang === 'zh'
+    ? { projectsMore: '查看全部项目 →', articlesMore: '查看全部文章 →' }
+    : { projectsMore: 'View all projects →', articlesMore: 'View all articles →' };
 ---
 
-<BaseLayout title="首页 | Jay Yu">
+<BaseLayout title={content.title}>
 	<div class="hero">
 		<h1>Hello, World!</h1>
-		<p class="subtitle">我是 Jay Yu，一名人工智能专业的在读研究生，一名热爱开源并乐于分享知识的开发者。</p>
-        
-        <div class="terminal-wrapper">
-            <div class="terminal-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-            </div>
-            <div class="terminal-body">
-                <pre><code><span class="prompt">$</span> whoami
-jayyu
-
-<span class="prompt">$</span> cat skills.txt
-- 深度学习→小样本行为识别
-- 软件架构设计 Web开发设计
-
-<span class="prompt">$</span> cat personality.txt
-- 技术热情 持续学习能力
-- 热爱开源 关注技术社区发展
-
-<span class="prompt">$</span> status --current
-持续学习，保持进步。
-
-<span class="prompt">$</span> _<span class="cursor"></span></code></pre>
-            </div>
-        </div>
+		<p class="subtitle">{content.subtitle}</p>
+        <TerminalCard lines={content.terminal} />
 	</div>
 
     <section class="home-section">
-        <h2>近期项目</h2>
-        <p>欢迎前往 <a href="/projects">项目页面</a> 查看我的开源作品。</p>
+        <h2>{content.sections[0].heading}</h2>
+        <div class="latest-project">
+            <ProjectCard project={latestProject} />
+        </div>
+        <a href={content.sections[0].linkHref} class="more-link">{sectionLabels.projectsMore}</a>
     </section>
 
     <section class="home-section">
-        <h2>最新文章</h2>
-        <p>我在 <a href="/blog">博客目录</a> 记录关于开发、架构与技术的思考。</p>
+        <h2>{content.sections[1].heading}</h2>
+        {latestPost && (
+            <BlogPostItem post={latestPost} lang={lang} blogBasePath={blogBasePath} />
+        )}
+        <a href={content.sections[1].linkHref} class="more-link">{sectionLabels.articlesMore}</a>
     </section>
 </BaseLayout>
 
@@ -68,66 +71,8 @@ jayyu
     
     .subtitle {
         font-size: 1.1rem;
-        color: #8b949e;
+        color: var(--secondary-text);
         margin-bottom: 30px;
-    }
-
-    .terminal-wrapper {
-        background-color: #0d1117;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        overflow: hidden;
-        margin-top: 20px;
-    }
-
-    .terminal-header {
-        background-color: #161b22;
-        padding: 10px 15px;
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        gap: 8px;
-    }
-
-    .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-
-    .dot.red { background-color: #ff5f56; }
-    .dot.yellow { background-color: #ffbd2e; }
-    .dot.green { background-color: #27c93f; }
-
-    .terminal-body {
-        padding: 20px;
-        font-size: 0.95rem;
-    }
-
-    .terminal-body pre {
-        margin: 0;
-        padding: 0;
-        background: transparent;
-        border: none;
-        overflow-x: auto;
-    }
-
-    .prompt {
-        color: var(--accent-color);
-    }
-
-    .cursor {
-        display: inline-block;
-        width: 10px;
-        height: 1.2em;
-        background-color: var(--text-color);
-        vertical-align: bottom;
-        animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
     }
 
     .home-section {
@@ -146,5 +91,24 @@ jayyu
     .home-section h2::before {
         content: "## ";
         color: var(--accent-color);
+    }
+
+    .latest-project {
+        max-width: 400px;
+        margin-top: 15px;
+    }
+
+    .more-link {
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .more-link:hover {
+        color: var(--accent-color);
+        text-decoration: none;
     }
 </style>

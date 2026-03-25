@@ -1,13 +1,15 @@
 ---
 import '../styles/global.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
 }
 
-const { title, description = "JayYuの博客站" } = Astro.props;
+const { title, description = "JayYuの博客站", image = "/cover.webp" } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -30,6 +32,11 @@ const isActive = (path: string) => {
 const toggleUrl = lang === 'zh' 
   ? '/en' + (currentPath === '/' ? '/' : currentPath) 
   : currentPath.replace(/^\/en/, '') || '/';
+
+// SEO: build canonical URL and full image URL
+const siteUrl = Astro.site ? Astro.site.origin : '';
+const canonicalUrl = siteUrl ? new URL(currentPath, siteUrl).href : currentPath;
+const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, siteUrl).href : image);
 ---
 
 <!doctype html>
@@ -42,9 +49,34 @@ const toggleUrl = lang === 'zh'
 		<link rel="apple-touch-icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content="Jay Yu's Blog" />
+		<meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<!-- Canonical -->
+		<link rel="canonical" href={canonicalUrl} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Prevent flash of wrong theme -->
+		<script is:inline>
+			const t = localStorage.getItem('theme') || 'dark';
+			document.documentElement.setAttribute('data-theme', t);
+		</script>
 	</head>
 	<body>
         <div class="container">
@@ -61,6 +93,7 @@ const toggleUrl = lang === 'zh'
                         ))}
                     </ul>
                     <div class="nav-actions">
+                        <ThemeToggle lang={lang} />
                         <div class="lang-switch">
                             <a href={toggleUrl}>[{lang === 'zh' ? 'EN' : '中文'}]</a>
                         </div>
@@ -153,7 +186,7 @@ const toggleUrl = lang === 'zh'
     }
 
     .contact-trigger {
-        color: #8b949e;
+        color: var(--secondary-text);
         font-size: 0.85rem;
         font-weight: bold;
         padding: 4px 12px;

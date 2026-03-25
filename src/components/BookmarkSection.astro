@@ -1,0 +1,69 @@
+---
+import type { BookmarkSection as BookmarkSectionType } from '../data/bookmarks';
+
+interface Props {
+    section: BookmarkSectionType;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="bookmark-section">
+    <h2>{section.category}</h2>
+    <ul class="bookmark-list">
+        {section.items.map(item => (
+            <li>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="bookmark-link">{item.name}</a>
+                <p class="bookmark-desc">{item.desc}</p>
+            </li>
+        ))}
+    </ul>
+</section>
+
+<style>
+    .bookmark-section {
+        margin-bottom: 40px;
+    }
+
+    .bookmark-section h2 {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+    }
+
+    .bookmark-section h2::before {
+        content: "## ";
+        color: var(--accent-color);
+    }
+
+    .bookmark-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .bookmark-list li {
+        margin-bottom: 20px;
+        padding-left: 15px;
+        border-left: 2px solid var(--border-color);
+    }
+
+    .bookmark-list li:hover {
+        border-left-color: var(--accent-color);
+        box-shadow: 0 0 12px rgba(88, 166, 255, 0.08);
+    }
+
+    .bookmark-link {
+        font-size: 1.1rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .bookmark-desc {
+        margin: 0;
+        color: var(--secondary-text);
+        font-size: 0.95rem;
+    }
+</style>

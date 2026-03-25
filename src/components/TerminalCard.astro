@@ -1,0 +1,83 @@
+---
+import type { TerminalLine } from '../data/home';
+
+interface Props {
+    lines: TerminalLine[];
+}
+
+const { lines } = Astro.props;
+
+// Build terminal content as a single string to avoid JSX whitespace issues inside <pre>
+const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).join('\n\n') + '\n\n$ _';
+---
+
+<div class="terminal-wrapper">
+    <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+    </div>
+    <div class="terminal-body">
+        <pre><code set:html={terminalContent.replace(/\$ /g, '<span class="prompt">$</span> ').replace('_', '_<span class="cursor"></span>')} /></pre>
+    </div>
+</div>
+
+<style>
+    .terminal-wrapper {
+        background-color: #0d1117;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    .terminal-header {
+        background-color: #161b22;
+        padding: 10px 15px;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .dot.red { background-color: #ff5f56; }
+    .dot.yellow { background-color: #ffbd2e; }
+    .dot.green { background-color: #27c93f; }
+
+    .terminal-body {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+
+    .terminal-body pre {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        overflow-x: auto;
+    }
+
+    .prompt {
+        color: var(--accent-color);
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background-color: var(--text-color);
+        vertical-align: bottom;
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+</style>

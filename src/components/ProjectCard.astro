@@ -1,0 +1,73 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+    project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a href={project.url} target="_blank" class="project-card">
+    <div class="card-header">
+        <h3>{project.name}</h3>
+    </div>
+    <p class="desc">{project.desc}</p>
+    <div class="card-footer">
+        <span class="lang"><span class="lang-dot"></span> {project.lang}</span>
+        <span class="stars">⭐ {project.stars}</span>
+    </div>
+</a>
+
+<style>
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .project-card:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
+    }
+
+    .card-header h3 {
+        margin: 0 0 10px 0;
+        color: var(--accent-color);
+        font-size: 1.2rem;
+    }
+
+    .desc {
+        font-size: 0.95rem;
+        margin: 0 0 20px 0;
+        flex-grow: 1;
+        color: var(--secondary-text);
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        font-size: 0.85rem;
+        color: var(--secondary-text);
+    }
+
+    .lang-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #f1e05a;
+        margin-right: 4px;
+        vertical-align: middle;
+    }
+</style>

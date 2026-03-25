@@ -1,0 +1,49 @@
+---
+import type { LifeItem } from '../data/life';
+
+interface Props {
+    item: LifeItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="hack-card">
+    <h3>{item.title}</h3>
+    <div class="hack-content">
+        {item.content}
+    </div>
+</article>
+
+<style>
+    .hack-card {
+        background-color: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 25px;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hack-card:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
+    }
+
+    .hack-card h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        color: var(--accent-color);
+    }
+
+    .hack-card h3::before {
+        content: "* ";
+        color: var(--text-color);
+    }
+
+    .hack-content {
+        color: var(--text-color);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+</style>

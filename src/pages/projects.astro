@@ -1,29 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { getProjects, getProjectsPageText } from '../data/projects';
 
-const projects = [
-    { name: "ArxivChef", desc: "抓取对应研究方向的 arxiv 最新论文。", lang: "Python", stars: 2, url: "https://github.com/JayYu686/ArxivChef" },
-    { name: "jayyu686-nav", desc: "个人资源导航网站。", lang: "Astro", stars: 3, url: "https://github.com/JayYu686/jayyu686-nav" },
-    { name: "JayYu-Blog", desc: "我的个人博客网站，采用极客风格构建。", lang: "Astro", stars: 0, url: "https://github.com/JayYu686/JayYu-Blog" }
-];
+const lang = getLangFromUrl(Astro.url);
+const projects = getProjects(lang);
+const text = getProjectsPageText(lang);
 ---
 
-<BaseLayout title="项目 | Jay Yu">
-    <h1 class="page-title">projects</h1>
-    <p>以下是我在 GitHub 上维护的部分开源项目合集。</p>
+<BaseLayout title={text.title}>
+    <h1 class="page-title">{text.heading}</h1>
+    <p>{text.intro}</p>
 
     <div class="projects-grid">
         {projects.map(project => (
-            <a href={project.url} target="_blank" class="project-card">
-                <div class="card-header">
-                    <h3>{project.name}</h3>
-                </div>
-                <p class="desc">{project.desc}</p>
-                <div class="card-footer">
-                    <span class="lang"><span class="lang-dot"></span> {project.lang}</span>
-                    <span class="stars">⭐ {project.stars}</span>
-                </div>
-            </a>
+            <ProjectCard project={project} />
         ))}
     </div>
 </BaseLayout>
@@ -34,56 +26,5 @@ const projects = [
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
         margin-top: 30px;
-    }
-
-    .project-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px;
-        background-color: var(--code-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        transition: all 0.2s ease;
-        text-decoration: none;
-        color: var(--text-color);
-    }
-
-    .project-card:hover {
-        border-color: var(--accent-color);
-        transform: translateY(-2px);
-        text-decoration: none;
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
-    }
-
-    .card-header h3 {
-        margin: 0 0 10px 0;
-        color: var(--accent-color);
-        font-size: 1.2rem;
-    }
-
-    .desc {
-        font-size: 0.95rem;
-        margin: 0 0 20px 0;
-        flex-grow: 1;
-        color: #8b949e;
-    }
-
-    .card-footer {
-        display: flex;
-        justify-content: flex-start;
-        gap: 15px;
-        font-size: 0.85rem;
-        color: #8b949e;
-    }
-
-    .lang-dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: #f1e05a; 
-        margin-right: 4px;
-        vertical-align: middle;
     }
 </style>
