@@ -67,6 +67,10 @@ const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).jo
         overflow-x: auto;
     }
 
+    .terminal-body code {
+        font-family: var(--font-mono);
+    }
+
     :global(.prompt) {
         color: var(--accent-color);
     }
