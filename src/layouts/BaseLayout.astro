@@ -103,7 +103,8 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
                         <div class="contact-wrapper">
                             <span class="contact-trigger">{lang === 'zh' ? '联系我' : 'Contact'}</span>
                             <div class="contact-dropdown">
-                                <p>📧 <a href="mailto:jayyu07@163.com">jayyu07@163.com</a></p>
+                                <!-- Break email to avoid Cloudflare obfuscation -->
+                                <p>📧 <a href="#" onclick="window.location.href='mailto:'+'jayyu07'+'@'+'163.com'; return false;">jayyu07<span>@</span>163.com</a></p>
                             <p>🐙 <a href="https://github.com/JayYu686" target="_blank">GitHub</a></p>
                         </div>
                     </div>
@@ -165,29 +166,41 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
 </html>
 
 <script>
-    const glow = document.getElementById('cursorGlow');
-    if (glow) {
-        document.addEventListener('mousemove', (e) => {
+    // Cursor-following glow effect dynamically linked to survive ViewTransitions
+    document.addEventListener('mousemove', (e) => {
+        const glow = document.getElementById('cursorGlow');
+        if (glow) {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
             glow.style.opacity = '1';
-        });
-        document.addEventListener('mouseleave', () => {
+        }
+    });
+
+    document.addEventListener('mouseleave', () => {
+        const glow = document.getElementById('cursorGlow');
+        if (glow) {
             glow.style.opacity = '0';
-        });
-    }
+        }
+    });
 
     // Mobile tap toggle for contact dropdown
-    const contactWrapper = document.querySelector('.contact-wrapper');
-    if (contactWrapper) {
-        contactWrapper.addEventListener('click', (e) => {
-            e.stopPropagation();
-            contactWrapper.classList.toggle('show');
-        });
-        document.addEventListener('click', () => {
-            contactWrapper.classList.remove('show');
-        });
-    }
+    document.addEventListener('astro:page-load', () => {
+        const contactWrapper = document.querySelector('.contact-wrapper');
+        if (contactWrapper) {
+            // Need a named function to prevent multiple bindings if page-load fires twice, 
+            // but we can just clear it or let Astro handle script re-evaluation.
+            // Using a simple delegated approach is safer
+            contactWrapper.addEventListener('click', (e) => {
+                e.stopPropagation();
+                contactWrapper.classList.toggle('show');
+            });
+        }
+    });
+    
+    document.addEventListener('click', () => {
+        const contactWrapper = document.querySelector('.contact-wrapper');
+        if (contactWrapper) contactWrapper.classList.remove('show');
+    });
 </script>
 
 <style>
@@ -256,6 +269,16 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
         min-width: 220px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(88, 166, 255, 0.08);
         z-index: 100;
+    }
+
+    /* Invisible hover bridge to prevent dropdown dismissing when mouse traverses the 8px gap */
+    .contact-dropdown::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 0;
+        right: 0;
+        height: 8px;
     }
 
     .contact-dropdown p {

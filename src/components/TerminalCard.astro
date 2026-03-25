@@ -18,7 +18,7 @@ const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).jo
         <span class="dot green"></span>
     </div>
     <div class="terminal-body">
-        <pre><code set:html={terminalContent.replace(/\$ /g, '<span class="prompt">$</span> ').replace('_', '_<span class="cursor"></span>')} /></pre>
+        <pre><code set:html={terminalContent.replace(/\$ /g, '<span class="prompt">$</span> ').replace('_', '<span class="cursor"></span>')} /></pre>
     </div>
 </div>
 
