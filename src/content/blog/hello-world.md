@@ -48,3 +48,27 @@ if __name__ == "__main__":
 ```
 
 再次感谢你的来访！如果你对我的开源项目和技术文章感兴趣，或者有任何想要交流的问题，随时可以通过 [GitHub](https://github.com/JayYu686) 找到我。
+
+## 5. 测试 Markdown 增强插件
+
+### KaTeX 公式测试
+
+这是一个内联公式测试：$E = mc^2$，以及下面是一个独立的方程块：
+
+$$
+\frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }
+$$
+
+### Mermaid 图表测试
+
+下面是一个 Mermaid 流程图演示：
+
+```mermaid
+graph TD;
+    A["Markdown"] --> B("Remark");
+    B --> C{"Rehype"};
+    C -->|"Math"| D["KaTeX"];
+    C -->|"Diagram"| E["Mermaid"];
+    D --> F["HTML"];
+    E --> F;
+```

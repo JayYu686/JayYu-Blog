@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -71,12 +72,14 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 
 		<!-- Prevent flash of wrong theme -->
 		<script is:inline>
 			const t = localStorage.getItem('theme') || 'dark';
 			document.documentElement.setAttribute('data-theme', t);
 		</script>
+		<ClientRouter />
 	</head>
 	<body>
         <div class="container">
@@ -118,6 +121,46 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
 
         <!-- Cursor glow orb -->
         <div class="cursor-glow" id="cursorGlow"></div>
+
+		<script type="module">
+			import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+			
+			// Initialize with light/dark theme depending on html data-theme
+			const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'default' : 'dark';
+			mermaid.initialize({ startOnLoad: false, theme: t });
+
+			document.addEventListener('astro:page-load', async () => {
+				const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"], .language-mermaid');
+				for (const block of mermaidBlocks) {
+					if (block.dataset.rendered) continue;
+					
+					// Get raw text content, stripping out any spans added by Shiki highlighter
+					const rawCode = block.textContent;
+					const container = document.createElement('div');
+					container.className = 'mermaid';
+					container.textContent = rawCode;
+					container.style.display = 'flex';
+					container.style.justifyContent = 'center';
+					container.style.margin = '2rem 0';
+					
+					// If it's a <pre>, replace it directly. If it's <code>, replace the parent <pre>.
+					if (block.tagName === 'PRE') {
+						block.replaceWith(container);
+					} else {
+						const pre = block.closest('pre');
+						if (pre) pre.replaceWith(container);
+					}
+				}
+				
+				try {
+					await mermaid.run({
+						querySelector: '.mermaid',
+					});
+				} catch (e) {
+					console.error('Mermaid render error:', e);
+				}
+			});
+		</script>
 	</body>
 </html>
 

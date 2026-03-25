@@ -14,7 +14,7 @@ const suffix = getHomeSectionSuffix(lang);
 const blogBasePath = lang === 'zh' ? '/blog' : `/${lang}/blog`;
 
 // Dynamic latest content
-const latestProject = getProjects(lang)[0];
+const latestProject = (await getProjects('en'))[0];
 const latestPost = (await getCollection('blog'))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 

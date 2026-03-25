@@ -30,6 +30,7 @@ const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).jo
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         overflow: hidden;
         margin-top: 20px;
+        color: #c9d1d9; /* Explicitly set dark mode text color since background is dark */
     }
 
     .terminal-header {
@@ -71,7 +72,7 @@ const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).jo
         display: inline-block;
         width: 10px;
         height: 1.2em;
-        background-color: var(--text-color);
+        background-color: #c9d1d9; /* Force light color for dark terminal */
         vertical-align: bottom;
         animation: blink 1s step-end infinite;
     }

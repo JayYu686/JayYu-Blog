@@ -20,5 +20,5 @@ export function getReadingTime(text: string, lang: 'zh' | 'en' = 'zh'): string {
   const minutes = Math.ceil(chineseChars / 300 + englishWords / 200);
   const result = Math.max(1, minutes);
 
-  return lang === 'zh' ? `${result} 分钟` : `${result} min`;
+  return lang === 'zh' ? `预计阅读时间：${result} 分钟` : `Estimated reading time: ${result} min`;
 }

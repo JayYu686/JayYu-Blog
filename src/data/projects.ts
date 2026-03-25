@@ -32,8 +32,30 @@ const pageText = {
   }
 };
 
-export function getProjects(lang: 'zh' | 'en') {
-  return projects[lang];
+export async function getProjects(lang: 'zh' | 'en') {
+  const projs = projects[lang];
+  
+  const updatedProjects = await Promise.all(
+    projs.map(async (project) => {
+      try {
+        const repoName = project.url.split('github.com/')[1];
+        if (!repoName) return project;
+        
+        const res = await fetch(`https://api.github.com/repos/${repoName}`, {
+          headers: { 'User-Agent': 'Astro-Blog-Builder' }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          return { ...project, stars: data.stargazers_count };
+        }
+      } catch (error) {
+        console.warn(`Failed to fetch stars for ${project.name}:`, error);
+      }
+      return project;
+    })
+  );
+  
+  return updatedProjects;
 }
 
 export function getProjectsPageText(lang: 'zh' | 'en') {

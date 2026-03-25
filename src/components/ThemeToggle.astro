@@ -51,17 +51,19 @@ const textDark = lang === 'zh' ? '深' : 'Dark';
 </style>
 
 <script>
-    const toggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
+    document.addEventListener('astro:page-load', () => {
+        const toggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
 
-    // Load saved theme or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    root.setAttribute('data-theme', savedTheme);
+        // Ensure theme is set correctly on navigate
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        root.setAttribute('data-theme', savedTheme);
 
-    toggle?.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+        toggle?.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
     });
 </script>
