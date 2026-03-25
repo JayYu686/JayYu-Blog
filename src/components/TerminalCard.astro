@@ -64,11 +64,11 @@ const terminalContent = lines.map(line => `$ ${line.prompt}\n${line.output}`).jo
         overflow-x: auto;
     }
 
-    .prompt {
+    :global(.prompt) {
         color: var(--accent-color);
     }
 
-    .cursor {
+    :global(.cursor) {
         display: inline-block;
         width: 10px;
         height: 1.2em;
