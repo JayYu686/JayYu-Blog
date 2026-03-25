@@ -82,6 +82,9 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
 		<ClientRouter />
 	</head>
 	<body>
+        <!-- Ambient mesh gradient glow -->
+        <div class="ambient-glow"></div>
+
         <div class="container">
             <header>
                 <nav>
@@ -216,6 +219,21 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
         z-index: 0;
         opacity: 0;
         transition: opacity 0.4s ease;
+    }
+
+    /* Fixed ambient background glow */
+    .ambient-glow {
+        position: fixed;
+        top: -15vw;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80vw;
+        height: 40vw;
+        background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+        filter: blur(80px);
+        opacity: 0.5;
+        z-index: 0;
+        pointer-events: none;
     }
 
     /* Page content fade-in */
