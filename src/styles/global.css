@@ -14,7 +14,7 @@
   --nav-hover-bg: rgba(88, 166, 255, 0.08);
   --nav-active-bg: rgba(88, 166, 255, 0.12);
   --nav-active-shadow: rgba(88, 166, 255, 0.2);
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Courier New', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', monospace;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-body: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
 }
@@ -156,9 +156,8 @@ nav ul a, .lang-switch a {
   font-weight: bold;
   padding: 4px 12px;
   background-color: transparent;
-  border: none;
-  border-radius: 6px;
-  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
@@ -166,14 +165,13 @@ nav ul a, .lang-switch a {
 
 nav ul a:hover, .lang-switch a:hover {
   color: var(--heading-color);
-  background-color: var(--nav-hover-bg);
+  border-bottom: 2px solid var(--border-color);
   text-decoration: none;
 }
 
 nav ul a.active {
   color: var(--heading-color);
-  background-color: var(--nav-active-bg);
-  box-shadow: 0 0 6px var(--nav-active-shadow);
+  border-bottom: 2px solid var(--accent-color);
   text-decoration: none;
 }
 
