@@ -11,11 +11,12 @@ const { project } = Astro.props;
 <a href={project.url} target="_blank" class="project-card">
     <div class="card-header">
         <h3>{project.name}</h3>
+        <span class="external-link" aria-hidden="true">↗</span>
     </div>
     <p class="desc">{project.desc}</p>
     <div class="card-footer">
         <span class="lang"><span class="lang-dot"></span> {project.lang}</span>
-        <span class="stars">⭐ {project.stars}</span>
+        <span class="stars">★ {project.stars}</span>
     </div>
 </a>
 
@@ -41,9 +42,29 @@ const { project } = Astro.props;
     }
 
     .card-header h3 {
-        margin: 0 0 10px 0;
+        margin: 0;
         color: var(--accent-color);
         font-size: 1.2rem;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .external-link {
+        color: var(--secondary-text);
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card:hover .external-link {
+        color: var(--accent-color);
+        transform: translate(2px, -2px);
     }
 
     .desc {
