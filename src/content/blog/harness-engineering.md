@@ -1,7 +1,7 @@
 ---
 title: "Harness Engineering：当 AI 写代码之后，工程师真正要构建什么？"
 description: "从 Prompt、Context 到可验证的反馈回路，理解 Harness Engineering 如何把代码智能体从聊天窗口变成可靠的工程协作者。"
-pubDate: 2026-08-31
+pubDate: 2026-02-11
 heroImage: "/cover.webp"
 tags:
   - AI
