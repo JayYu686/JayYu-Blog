@@ -231,6 +231,39 @@ pre code {
   border: none;
 }
 
+/* Runtime-injected code copy control */
+pre.code-block {
+  position: relative;
+  padding-top: 48px;
+}
+
+pre.code-block .copy-code-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--secondary-text);
+  cursor: pointer;
+  font: 0.75rem var(--font-mono);
+  line-height: 1.2;
+  opacity: 0.92;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+pre.code-block .copy-code-button:hover {
+  border-color: var(--accent-color);
+  background: var(--nav-hover-bg);
+  color: var(--accent-color);
+  box-shadow: 0 0 6px var(--nav-active-shadow);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
