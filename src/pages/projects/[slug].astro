@@ -1,0 +1,21 @@
+---
+import { getProject, projects } from '../../data/projects';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectDetail from '../../components/ProjectDetail.astro';
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { slug: project.slug },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+if (!project || !getProject(project.slug)) {
+    throw new Error(`Project not found: ${Astro.params.slug}`);
+}
+---
+
+<BaseLayout title={`${project.name} | Jay Yu`} description={project.desc.zh}>
+    <ProjectDetail project={project} lang="zh" />
+</BaseLayout>

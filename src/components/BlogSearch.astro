@@ -1,0 +1,120 @@
+---
+interface Props {
+    lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const labels = lang === 'zh'
+    ? { label: '搜索文章', placeholder: '搜索标题、摘要、标签或分类…', clear: '清除', found: '篇文章', empty: '没有找到匹配的文章。' }
+    : { label: 'Search articles', placeholder: 'Search titles, summaries, tags, or categories…', clear: 'Clear', found: 'articles', empty: 'No matching articles found.' };
+---
+
+<div class="blog-search" data-blog-search data-found-label={labels.found}>
+    <label for="blog-search-input">{labels.label}</label>
+    <div class="search-row">
+        <input id="blog-search-input" data-blog-search-input type="search" placeholder={labels.placeholder} autocomplete="off" />
+        <button type="button" data-blog-search-clear>{labels.clear}</button>
+    </div>
+    <p class="search-status" data-blog-search-status aria-live="polite"></p>
+    <p class="search-empty" data-blog-search-empty hidden>{labels.empty}</p>
+</div>
+
+<script>
+    const initBlogSearch = () => {
+        document.querySelectorAll<HTMLElement>('[data-blog-search]').forEach((search) => {
+            if (search.dataset.bound) return;
+            search.dataset.bound = 'true';
+
+            const input = search.querySelector<HTMLInputElement>('[data-blog-search-input]');
+            const clear = search.querySelector<HTMLButtonElement>('[data-blog-search-clear]');
+            const status = search.querySelector<HTMLElement>('[data-blog-search-status]');
+            const empty = search.querySelector<HTMLElement>('[data-blog-search-empty]');
+            const items = [...document.querySelectorAll<HTMLElement>('[data-post-search]')];
+            const foundLabel = search.dataset.foundLabel || 'articles';
+
+            const applySearch = () => {
+                const query = input?.value.trim().toLocaleLowerCase() || '';
+                let visible = 0;
+                items.forEach((item) => {
+                    const matches = !query || (item.dataset.postSearch || '').includes(query);
+                    item.hidden = !matches;
+                    if (matches) visible += 1;
+                });
+                if (status) status.textContent = `${visible} ${foundLabel}`;
+                if (empty) empty.hidden = visible !== 0;
+                const url = new URL(window.location.href);
+                if (query) url.searchParams.set('q', input?.value.trim() || '');
+                else url.searchParams.delete('q');
+                window.history.replaceState({}, '', url);
+            };
+
+            const query = new URLSearchParams(window.location.search).get('q');
+            if (input && query) input.value = query;
+            input?.addEventListener('input', applySearch);
+            clear?.addEventListener('click', () => {
+                if (input) input.value = '';
+                applySearch();
+                input?.focus();
+            });
+            applySearch();
+        });
+    };
+
+    document.addEventListener('astro:page-load', initBlogSearch);
+    initBlogSearch();
+</script>
+
+<style>
+    .blog-search {
+        margin-top: 30px;
+        padding: 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--code-bg);
+    }
+
+    .blog-search label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--secondary-text);
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+    }
+
+    .search-row {
+        display: flex;
+        gap: 8px;
+    }
+
+    .search-row input {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 12px;
+        color: var(--text-color);
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font: inherit;
+    }
+
+    .search-row button {
+        padding: 0 14px;
+        color: var(--accent-color);
+        background: transparent;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        cursor: pointer;
+        font: inherit;
+    }
+
+    .search-status,
+    .search-empty {
+        margin: 8px 0 0;
+        color: var(--secondary-text);
+        font-size: 0.85rem;
+    }
+
+    .search-empty {
+        color: var(--accent-color);
+    }
+</style>

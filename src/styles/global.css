@@ -61,6 +61,15 @@ a:hover {
   text-shadow: 0 0 8px var(--accent-glow);
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-weight: bold;
@@ -220,4 +229,15 @@ pre code {
   background-color: transparent;
   padding: 0;
   border: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

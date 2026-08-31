@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import ProjectFilters from '../../components/ProjectFilters.astro';
 import { getLangFromUrl } from '../../i18n/utils';
 import { getProjects, getProjectsPageText } from '../../data/projects';
 
@@ -13,9 +14,11 @@ const text = getProjectsPageText(lang);
     <h1 class="page-title">{text.heading}</h1>
     <p>{text.intro}</p>
 
+    <ProjectFilters projects={projects} lang={lang} />
+
     <div class="projects-grid">
         {projects.map(project => (
-            <ProjectCard project={project} />
+            <ProjectCard project={project} lang={lang} />
         ))}
     </div>
 </BaseLayout>

@@ -148,6 +148,17 @@ Runs locally at `http://localhost:4321`.
 ```bash
 npm run build
 ```
+The build runs `npm run sync:projects` first and refreshes `src/data/github-projects.json` from the public repositories of `JayYu686`. Set `GITHUB_TOKEN` in CI when you need authenticated GitHub API rate limits.
+
+Project descriptions, types, screenshots, demos, and technical details are maintained in `scripts/project-metadata.json`; GitHub-owned fields such as stars, forks, topics, language, and `updatedAt` are generated at build time.
+
+The inference benchmark can be run against any OpenAI-compatible streaming endpoint:
+
+```bash
+python scripts/benchmark_llm_serving.py --model Qwen/Qwen3-8B --requests 32 --concurrency 8
+```
+
+See `src/content/blog/llm-serving-benchmark.md` for the vLLM comparison workflow.
 
 ## Content Maintenance
 

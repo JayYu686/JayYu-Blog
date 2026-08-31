@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostItem from '../../components/BlogPostItem.astro';
+import BlogSearch from '../../components/BlogSearch.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl } from '../../i18n/utils';
 import { getBlogPageText } from '../../data/home';
@@ -17,6 +18,8 @@ const posts = (await getCollection('blog')).sort(
 <BaseLayout title={text.title}>
     <h1 class="page-title">{text.heading}</h1>
     <p>{text.intro}</p>
+
+    <BlogSearch lang={lang} />
 
     <div class="posts-list">
         {posts.map(post => (

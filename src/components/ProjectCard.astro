@@ -3,20 +3,32 @@ import type { Project } from '../data/projects';
 
 interface Props {
     project: Project;
+    lang: 'zh' | 'en';
 }
 
-const { project } = Astro.props;
+const { project, lang } = Astro.props;
+const description = project.desc[lang];
+const detailUrl = lang === 'zh' ? `/projects/${project.slug}` : `/en/projects/${project.slug}`;
 ---
 
-<a href={project.url} target="_blank" class="project-card">
+<a
+    href={detailUrl}
+    class="project-card"
+    data-project-card
+    data-language={project.lang}
+    data-type={project.type}
+>
     <div class="card-header">
-        <h3>{project.name}</h3>
+        <div>
+            <span class="project-type">{project.type}</span>
+            <h2>{project.name}</h2>
+        </div>
         <span class="external-link" aria-hidden="true">↗</span>
     </div>
-    <p class="desc">{project.desc}</p>
+    <p class="desc">{description}</p>
     <div class="card-footer">
-        <span class="lang"><span class="lang-dot"></span> {project.lang}</span>
-        <span class="stars">★ {project.stars}</span>
+        <span class="lang"><span class="lang-dot"></span>{project.lang}</span>
+        <span class="stats">★ {project.stars} · Fork {project.forks}</span>
     </div>
 </a>
 
@@ -25,11 +37,12 @@ const { project } = Astro.props;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-height: 170px;
         padding: 20px;
         background-color: var(--code-bg);
         border: 1px solid var(--border-color);
         border-radius: 6px;
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         text-decoration: none;
         color: var(--text-color);
     }
@@ -41,18 +54,25 @@ const { project } = Astro.props;
         box-shadow: 0 0 15px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
     }
 
-    .card-header h3 {
-        margin: 0;
+    .card-header h2 {
+        margin: 4px 0 0;
         color: var(--accent-color);
         font-size: 1.2rem;
     }
 
     .card-header {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         gap: 12px;
         margin-bottom: 10px;
+    }
+
+    .project-type {
+        color: var(--secondary-text);
+        font-size: 0.75rem;
+        font-family: var(--font-mono);
+        letter-spacing: 0.04em;
     }
 
     .external-link {
@@ -69,14 +89,15 @@ const { project } = Astro.props;
 
     .desc {
         font-size: 0.95rem;
-        margin: 0 0 20px 0;
+        margin: 0 0 20px;
         flex-grow: 1;
         color: var(--secondary-text);
+        line-height: 1.6;
     }
 
     .card-footer {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         gap: 15px;
         font-size: 0.85rem;
         color: var(--secondary-text);
@@ -90,5 +111,18 @@ const { project } = Astro.props;
         background-color: #f1e05a;
         margin-right: 4px;
         vertical-align: middle;
+    }
+
+    .stats {
+        font-family: var(--font-mono);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 520px) {
+        .card-footer {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 6px;
+        }
     }
 </style>

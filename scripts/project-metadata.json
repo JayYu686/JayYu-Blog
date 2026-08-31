@@ -1,0 +1,74 @@
+{
+  "TinyLLM-System": {
+    "type": "LLM / System",
+    "descZh": "基于 PyTorch FSDP2 与 Qwen3 的可复现 LLM 后训练、评测与服务系统。",
+    "descEn": "A reproducible LLM post-training, evaluation, and serving system built with PyTorch FSDP2 and Qwen3.",
+    "techStack": ["Python", "PyTorch", "FSDP2", "Qwen3"],
+    "details": {
+      "zh": { "background": "将后训练、评测和推理服务拆成可重复运行的工程流程，便于验证不同训练与服务策略。", "outcome": "形成覆盖训练、评测和服务的实验型 LLM 工程基线。" },
+      "en": { "background": "A reproducible workflow for post-training, evaluation, and serving experiments.", "outcome": "Provides an engineering baseline that connects training, evaluation, and serving. " }
+    }
+  },
+  "commerceflow-agent": {
+    "type": "AI Agent",
+    "descZh": "面向电商流程的智能体实验项目。",
+    "descEn": "An agent-based experiment for commerce workflows.",
+    "techStack": ["Python", "LLM", "Agent"],
+    "details": {
+      "zh": { "background": "探索智能体在电商流程中的任务拆解、工具调用与结果编排。", "outcome": "沉淀了面向业务流程的智能体实验代码与设计思路。" },
+      "en": { "background": "Explores task decomposition, tool use, and orchestration for commerce workflows.", "outcome": "Captures reusable agent experiments and design patterns for business workflows." }
+    }
+  },
+  "LifeSideQuest": {
+    "type": "Mobile App",
+    "descZh": "基于 Flutter 的人生支线任务 APP，帮助完成每天的支线任务。",
+    "descEn": "A Flutter app for completing daily life side quests.",
+    "techStack": ["Dart", "Flutter"],
+    "details": {
+      "zh": { "background": "把日常目标转化为更轻量、更有趣的支线任务体验。", "outcome": "完成了一个面向移动端的任务管理与激励原型。" },
+      "en": { "background": "Turns everyday goals into a lighter and more playful side-quest experience.", "outcome": "A mobile task-management and motivation prototype built with Flutter." }
+    }
+  },
+  "jayyu686-nav": {
+    "type": "Web / Navigation",
+    "descZh": "个人资源导航网站。",
+    "descEn": "A personal resource navigation site.",
+    "demoUrl": "https://jayyu686.top/",
+    "techStack": ["Astro", "TypeScript", "CSS"],
+    "details": {
+      "zh": { "background": "整理个人常用的开发、学习和 AI 资源，降低重复查找成本。", "outcome": "上线了可持续维护的个人资源导航站。" },
+      "en": { "background": "Organizes frequently used development, learning, and AI resources.", "outcome": "A maintainable personal resource navigation site published online." }
+    }
+  },
+  "LingStack": {
+    "type": "AI / Resource App",
+    "descZh": "基于 Flutter 和 Go 的跨端 AI 资源库，收集 Prompts、Skills 与 MCP。",
+    "descEn": "A cross-platform AI resource library built with Flutter and Go for Prompts, Skills, and MCP.",
+    "techStack": ["Dart", "Flutter", "Go", "MCP"],
+    "details": {
+      "zh": { "background": "为快速增长的 AI 工具与资源建立统一的整理、检索和跨端使用入口。", "outcome": "搭建了覆盖移动端与服务端的 AI 资源库雏形。" },
+      "en": { "background": "Creates a unified way to organize, search, and use the growing set of AI resources.", "outcome": "A cross-platform AI resource library prototype spanning client and server." }
+    }
+  },
+  "JayYu-Blog": {
+    "type": "Web / Blog",
+    "descZh": "我的个人博客网站。",
+    "descEn": "My personal blog website.",
+    "demoUrl": "https://jayyu.top/",
+    "techStack": ["Astro", "TypeScript", "Markdown", "CSS"],
+    "details": {
+      "zh": { "background": "用博客记录 AI 工程、开发实践和个人项目，并保持内容可检索、可复现。", "outcome": "构建了支持中英文、项目展示和技术文章的个人站点。" },
+      "en": { "background": "Documents AI engineering, development practices, and personal projects in a searchable format.", "outcome": "A bilingual personal site for projects and technical writing." }
+    }
+  },
+  "ArxivChef": {
+    "type": "Research Tool",
+    "descZh": "抓取对应研究方向的 arXiv 最新论文。",
+    "descEn": "A script to fetch the latest arXiv papers for specific research areas.",
+    "techStack": ["Python", "arXiv API"],
+    "details": {
+      "zh": { "background": "减少跟踪研究方向新论文时的重复检索和筛选工作。", "outcome": "提供了按研究方向获取 arXiv 最新论文的自动化工具。" },
+      "en": { "background": "Reduces repetitive searching and filtering when following new papers.", "outcome": "An automation tool for collecting recent arXiv papers by research area." }
+    }
+  }
+}

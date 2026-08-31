@@ -1,0 +1,209 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+    project: Project;
+    lang: 'zh' | 'en';
+}
+
+const { project, lang } = Astro.props;
+const detail = project.details[lang];
+const projectsPath = lang === 'zh' ? '/projects' : '/en/projects';
+const dateLocale = lang === 'zh' ? 'zh-CN' : 'en-US';
+const labels = lang === 'zh'
+    ? { back: '返回项目列表', repo: '仓库', demo: '在线 Demo', background: '项目背景', outcome: '项目成果', stack: '技术栈', topics: 'Topics', updated: '最近更新', forks: 'Forks' }
+    : { back: 'Back to projects', repo: 'Repository', demo: 'Live demo', background: 'Background', outcome: 'Outcome', stack: 'Tech stack', topics: 'Topics', updated: 'Updated', forks: 'Forks' };
+---
+
+<a class="project-back" href={projectsPath}>← {labels.back}</a>
+
+<article class="project-detail">
+    <header class="project-detail-header">
+        <div>
+            <span class="project-type">{project.type}</span>
+            <h1 class="page-title">{project.name}</h1>
+            <p class="project-description">{project.desc[lang]}</p>
+        </div>
+        <div class="project-actions">
+            <a href={project.url} target="_blank" rel="noopener noreferrer">{labels.repo} ↗</a>
+            {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">{labels.demo} ↗</a>}
+        </div>
+    </header>
+
+    <img class="project-screenshot" src={project.screenshotUrl} alt={`${project.name} preview`} loading="lazy" decoding="async" />
+
+    <div class="project-meta-grid">
+        <div><strong>★ {project.stars}</strong><span>Stars</span></div>
+        <div><strong>{project.forks}</strong><span>{labels.forks}</span></div>
+        <div><strong>{project.lang}</strong><span>Language</span></div>
+        <div><strong>{new Date(project.updatedAt).toLocaleDateString(dateLocale)}</strong><span>{labels.updated}</span></div>
+    </div>
+
+    <div class="project-detail-grid">
+        <section>
+            <h2>{labels.background}</h2>
+            <p>{detail.background}</p>
+        </section>
+        <section>
+            <h2>{labels.outcome}</h2>
+            <p>{detail.outcome}</p>
+        </section>
+    </div>
+
+    <section class="project-taxonomy">
+        <h2>{labels.stack}</h2>
+        <div class="tag-list">
+            {project.techStack.map((item) => <span>{item}</span>)}
+        </div>
+        {project.topics.length > 0 && <>
+            <h2>{labels.topics}</h2>
+            <div class="tag-list">
+                {project.topics.map((topic) => <span>{topic}</span>)}
+            </div>
+        </>}
+    </section>
+</article>
+
+<style>
+    .project-back {
+        display: inline-block;
+        margin: 35px 0 20px;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-family: var(--font-mono);
+    }
+
+    .project-detail {
+        padding-bottom: 40px;
+    }
+
+    .project-detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 28px;
+    }
+
+    .project-type {
+        color: var(--secondary-text);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+    }
+
+    .page-title {
+        margin: 6px 0 10px;
+    }
+
+    .project-description {
+        margin: 0;
+        max-width: 650px;
+        color: var(--secondary-text);
+        line-height: 1.7;
+    }
+
+    .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .project-actions a {
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        color: var(--accent-color);
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .project-screenshot {
+        display: block;
+        width: 100%;
+        max-height: 420px;
+        object-fit: cover;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background: var(--code-bg);
+    }
+
+    .project-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        margin: 28px 0 40px;
+        border: 1px solid var(--border-color);
+        background: var(--border-color);
+    }
+
+    .project-meta-grid div {
+        display: grid;
+        gap: 5px;
+        padding: 16px;
+        background: var(--bg-color);
+    }
+
+    .project-meta-grid strong {
+        color: var(--accent-color);
+        font-family: var(--font-mono);
+        overflow-wrap: anywhere;
+    }
+
+    .project-meta-grid span {
+        color: var(--secondary-text);
+        font-size: 0.8rem;
+    }
+
+    .project-detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .project-detail h2 {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+    }
+
+    .project-detail p {
+        line-height: 1.8;
+        color: var(--secondary-text);
+    }
+
+    .project-taxonomy {
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px dashed var(--border-color);
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .tag-list span {
+        padding: 5px 9px;
+        border-radius: 4px;
+        background: var(--code-bg);
+        color: var(--secondary-text);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 650px) {
+        .project-detail-header,
+        .project-detail-grid {
+            display: block;
+        }
+
+        .project-actions {
+            margin-top: 20px;
+        }
+
+        .project-meta-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>

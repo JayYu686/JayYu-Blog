@@ -1,0 +1,124 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+    projects: Project[];
+    lang: 'zh' | 'en';
+}
+
+const { projects, lang } = Astro.props;
+const languages = [...new Set(projects.map((project) => project.lang))].sort();
+const types = [...new Set(projects.map((project) => project.type))].sort();
+const labels = lang === 'zh'
+    ? { language: '语言', type: '项目类型', all: '全部', count: '个项目', empty: '没有符合条件的项目。' }
+    : { language: 'Language', type: 'Type', all: 'All', count: 'projects', empty: 'No projects match these filters.' };
+---
+
+<div class="project-toolbar" data-project-filters>
+    <label>
+        <span>{labels.language}</span>
+        <select data-project-language>
+            <option value="">{labels.all}</option>
+            {languages.map((language) => <option value={language}>{language}</option>)}
+        </select>
+    </label>
+    <label>
+        <span>{labels.type}</span>
+        <select data-project-type>
+            <option value="">{labels.all}</option>
+            {types.map((type) => <option value={type}>{type}</option>)}
+        </select>
+    </label>
+    <span class="project-count" data-project-count>{projects.length} {labels.count}</span>
+    <span class="project-empty" data-project-empty hidden>{labels.empty}</span>
+</div>
+
+<script>
+    const initProjectFilters = () => {
+        document.querySelectorAll<HTMLElement>('[data-project-filters]').forEach((toolbar) => {
+            if (toolbar.dataset.bound) return;
+            toolbar.dataset.bound = 'true';
+
+            const language = toolbar.querySelector<HTMLSelectElement>('[data-project-language]');
+            const type = toolbar.querySelector<HTMLSelectElement>('[data-project-type]');
+            const count = toolbar.querySelector<HTMLElement>('[data-project-count]');
+            const empty = toolbar.querySelector<HTMLElement>('[data-project-empty]');
+            const cards = [...document.querySelectorAll<HTMLElement>('[data-project-card]')];
+            const countLabel = count?.textContent?.replace(/^\d+\s*/, '') || 'projects';
+
+            const applyFilters = () => {
+                const visible = cards.filter((card) => {
+                    const matchesLanguage = !language?.value || card.dataset.language === language.value;
+                    const matchesType = !type?.value || card.dataset.type === type.value;
+                    card.hidden = !(matchesLanguage && matchesType);
+                    return !card.hidden;
+                }).length;
+                if (count) count.textContent = `${visible} ${countLabel}`;
+                if (empty) empty.hidden = visible !== 0;
+            };
+
+            language?.addEventListener('change', applyFilters);
+            type?.addEventListener('change', applyFilters);
+        });
+    };
+
+    document.addEventListener('astro:page-load', initProjectFilters);
+    initProjectFilters();
+</script>
+
+<style>
+    .project-toolbar {
+        display: flex;
+        align-items: end;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        margin: 30px 0 24px;
+        padding: 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--code-bg);
+    }
+
+    .project-toolbar label {
+        display: grid;
+        gap: 5px;
+        color: var(--secondary-text);
+        font-size: 0.8rem;
+        font-family: var(--font-mono);
+    }
+
+    .project-toolbar select {
+        min-width: 150px;
+        padding: 7px 10px;
+        color: var(--text-color);
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font: inherit;
+    }
+
+    .project-count,
+    .project-empty {
+        margin-left: auto;
+        color: var(--secondary-text);
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+    }
+
+    .project-empty {
+        color: var(--accent-color);
+    }
+
+    @media (max-width: 520px) {
+        .project-toolbar label,
+        .project-toolbar select {
+            width: 100%;
+        }
+
+        .project-count,
+        .project-empty {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+</style>

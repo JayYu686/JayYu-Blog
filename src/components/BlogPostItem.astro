@@ -8,28 +8,31 @@ interface Props {
 }
 
 const { post, lang, blogBasePath } = Astro.props;
-
 const dateLocale = lang === 'zh' ? 'zh-CN' : 'en-US';
 const dateOptions: Intl.DateTimeFormatOptions = lang === 'zh'
     ? { year: 'numeric', month: '2-digit', day: '2-digit' }
     : { year: 'numeric', month: 'short', day: 'numeric' };
-
 const formattedDate = lang === 'zh'
     ? post.data.pubDate.toLocaleDateString(dateLocale, dateOptions).replace(/\//g, '-')
     : post.data.pubDate.toLocaleDateString(dateLocale, dateOptions);
+const taxonomy = [post.data.title, post.data.description, post.data.category || '', ...post.data.tags].join(' ').toLocaleLowerCase();
 ---
 
-<article class="post-item">
+<article class="post-item" data-post-search={taxonomy}>
     <a href={`${blogBasePath}/${post.id}`} class="post-link">
         <div class="post-info">
-            <time class="post-date" datetime={post.data.pubDate.toISOString()}>
-                {formattedDate}
-            </time>
+            <time class="post-date" datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+            {post.data.category && <span class="post-category">{post.data.category}</span>}
             <h2>{post.data.title}</h2>
             <p class="post-desc">{post.data.description}</p>
+            {post.data.tags.length > 0 && (
+                <div class="post-tags" aria-label={lang === 'zh' ? '文章标签' : 'Article tags'}>
+                    {post.data.tags.map((tag) => <span>#{tag}</span>)}
+                </div>
+            )}
         </div>
         <div class="post-thumbnail">
-            <img src={post.data.heroImage || "/cover.webp"} onerror="this.onerror=null;this.src='/cover.webp';" alt="" />
+            <img src={post.data.heroImage || '/cover.webp'} onerror="this.onerror=null;this.src='/cover.webp';" alt="" loading="lazy" decoding="async" />
         </div>
     </a>
 </article>
@@ -39,7 +42,7 @@ const formattedDate = lang === 'zh'
         background-color: transparent;
         border-left: 2px solid transparent;
         padding: 20px;
-        transition: all 0.2s ease;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .post-item:hover {
@@ -71,10 +74,16 @@ const formattedDate = lang === 'zh'
         gap: 8px;
     }
 
-    .post-date {
+    .post-date,
+    .post-category {
         color: var(--secondary-text);
         font-size: 0.9rem;
         font-family: var(--font-mono);
+    }
+
+    .post-category {
+        color: var(--accent-color);
+        font-size: 0.78rem;
     }
 
     .post-info h2 {
@@ -88,10 +97,6 @@ const formattedDate = lang === 'zh'
         color: var(--accent-color);
     }
 
-    .post-info h2::before {
-        content: "";
-    }
-
     .post-desc {
         margin: 0;
         color: var(--secondary-text);
@@ -102,6 +107,15 @@ const formattedDate = lang === 'zh'
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        color: var(--secondary-text);
+        font-size: 0.8rem;
+        font-family: var(--font-mono);
     }
 
     .post-thumbnail {
