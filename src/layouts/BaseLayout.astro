@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-700.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { ClientRouter } from 'astro:transitions';
@@ -75,11 +77,6 @@ const ogImage = image.startsWith('http') ? image : (siteUrl ? new URL(image, sit
 
 		<!-- Canonical -->
 		<link rel="canonical" href={canonicalUrl} />
-
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 
 		<!-- Prevent flash of wrong theme -->
 		<script is:inline>

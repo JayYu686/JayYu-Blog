@@ -15,7 +15,7 @@
   --nav-active-shadow: rgba(88, 166, 255, 0.2);
   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Courier New', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', monospace;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-body: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  --font-body: 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', STSong, SimSun, serif;
 }
 
 /* Light theme */

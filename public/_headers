@@ -1,0 +1,13 @@
+# Astro fingerprints files under /_astro, so they can be cached permanently.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Public image paths are stable across deploys, so keep a shorter browser TTL.
+/images/*
+  Cache-Control: public, max-age=604800
+
+/cover.webp
+  Cache-Control: public, max-age=604800
+
+/favicon.png
+  Cache-Control: public, max-age=604800
