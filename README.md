@@ -158,8 +158,6 @@ The inference benchmark can be run against any OpenAI-compatible streaming endpo
 python scripts/benchmark_llm_serving.py --model Qwen/Qwen3-8B --requests 32 --concurrency 8
 ```
 
-See `src/content/blog/llm-serving-benchmark.md` for the vLLM comparison workflow.
-
 ## Content Maintenance
 
 Markdown blog configurations and paths are located in: `src/content/blog/`. You can embed remote images in your articles seamlessly using standard Markdown syntax, as the global styles will automatically apply rounded borders and maintain responsive width constraints.
