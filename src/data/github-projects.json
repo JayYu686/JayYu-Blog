@@ -1,39 +1,5 @@
 [
   {
-    "slug": "JayYu-Blog",
-    "name": "JayYu-Blog",
-    "desc": {
-      "zh": "我的个人博客网站。",
-      "en": "My personal blog website."
-    },
-    "lang": "Astro",
-    "stars": 1,
-    "forks": 0,
-    "updatedAt": "2026-08-31T09:57:09Z",
-    "topics": [],
-    "url": "https://github.com/JayYu686/JayYu-Blog",
-    "homepage": null,
-    "demoUrl": "https://jayyu.top/",
-    "screenshotUrl": "https://opengraph.githubassets.com/1/JayYu686/JayYu-Blog",
-    "type": "Web / Blog",
-    "techStack": [
-      "Astro",
-      "TypeScript",
-      "Markdown",
-      "CSS"
-    ],
-    "details": {
-      "zh": {
-        "background": "用博客记录 AI 工程、开发实践和个人项目，并保持内容可检索、可复现。",
-        "outcome": "构建了支持中英文、项目展示和技术文章的个人站点。"
-      },
-      "en": {
-        "background": "Documents AI engineering, development practices, and personal projects in a searchable format.",
-        "outcome": "A bilingual personal site for projects and technical writing."
-      }
-    }
-  },
-  {
     "slug": "TinyLLM-System",
     "name": "TinyLLM-System",
     "desc": {
@@ -41,9 +7,9 @@
       "en": "A reproducible LLM post-training, evaluation, and serving system built with PyTorch FSDP2 and Qwen3."
     },
     "lang": "Python",
-    "stars": 1,
+    "stars": 13,
     "forks": 0,
-    "updatedAt": "2026-08-31T07:10:53Z",
+    "updatedAt": "2026-09-03T03:22:15Z",
     "topics": [],
     "url": "https://github.com/JayYu686/TinyLLM-System",
     "homepage": null,
@@ -64,6 +30,40 @@
       "en": {
         "background": "A reproducible workflow for post-training, evaluation, and serving experiments.",
         "outcome": "Provides an engineering baseline that connects training, evaluation, and serving. "
+      }
+    }
+  },
+  {
+    "slug": "JayYu-Blog",
+    "name": "JayYu-Blog",
+    "desc": {
+      "zh": "我的个人博客网站。",
+      "en": "My personal blog website."
+    },
+    "lang": "Astro",
+    "stars": 1,
+    "forks": 0,
+    "updatedAt": "2026-09-01T06:44:06Z",
+    "topics": [],
+    "url": "https://github.com/JayYu686/JayYu-Blog",
+    "homepage": null,
+    "demoUrl": "https://jayyu.top/",
+    "screenshotUrl": "https://opengraph.githubassets.com/1/JayYu686/JayYu-Blog",
+    "type": "Web / Blog",
+    "techStack": [
+      "Astro",
+      "TypeScript",
+      "Markdown",
+      "CSS"
+    ],
+    "details": {
+      "zh": {
+        "background": "用博客记录 AI 工程、开发实践和个人项目，并保持内容可检索、可复现。",
+        "outcome": "构建了支持中英文、项目展示和技术文章的个人站点。"
+      },
+      "en": {
+        "background": "Documents AI engineering, development practices, and personal projects in a searchable format.",
+        "outcome": "A bilingual personal site for projects and technical writing."
       }
     }
   },
